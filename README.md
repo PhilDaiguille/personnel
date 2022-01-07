@@ -1,4 +1,4 @@
-# Personnel - PROG BTS SIO SLAM2
+# Personnel - PROJET G BTS SIO SLAM2
 Un des responsables de la M2L, utilise une application pour gérer les employés des ligues. L’application est mise à votre disposition par le biais des ressources suivantes :
 
     - Le code source sur Github.
