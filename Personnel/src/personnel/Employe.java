@@ -34,6 +34,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * passée en paramètre.
 	 * @param ligue la ligue pour laquelle on souhaite vérifier si this 
 	 * est l'admininstrateur.
+	 * c'pour voir si �a marche
 	 */
 	
 	public boolean estAdmin(Ligue ligue)
