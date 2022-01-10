@@ -1,6 +1,7 @@
 package personnel;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * Employé d'une ligue hébergée par la M2L. Certains peuvent 
@@ -14,10 +15,11 @@ public class Employe implements Serializable, Comparable<Employe>
 {
 	private static final long serialVersionUID = 4795721718037994734L;
 	private String nom, prenom, password, mail;
+	private LocalDate dateA, dateD;
 	private Ligue ligue;
 	private GestionPersonnel gestionPersonnel;
 	
-	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password)
+	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, LocalDate dateA, LocalDate dateD)
 	{
 		this.gestionPersonnel = gestionPersonnel;
 		this.nom = nom;
@@ -25,6 +27,8 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.password = password;
 		this.mail = mail;
 		this.ligue = ligue;
+		this.dateA = dateA;
+		this.dateD = dateD;
 	}
 	
 	/**
@@ -51,7 +55,30 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		return gestionPersonnel.getRoot() == this;
 	}
-	
+	/**
+	 * Retourne la date de l'arrivée de l'employé.
+	 * @return le date de l'arrivée de l'employé. 
+	 */
+	public LocalDate getDateA()
+	{
+		return dateA;
+	}
+	public void setDateA(LocalDate dateA)
+	{
+		this.dateA = dateA;
+	}
+	/**
+	 * Retourne la date de départ de l'employé.
+	 * @return le date de départ de l'employé. 
+	 */
+	public LocalDate getDateD()
+	{
+		return dateD;
+	}
+	public void setDateD(LocalDate dateD)
+	{
+		this.dateD = dateD;
+	}
 	/**
 	 * Retourne le nom de l'employé.
 	 * @return le nom de l'employé. 
