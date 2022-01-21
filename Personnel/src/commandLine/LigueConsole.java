@@ -100,11 +100,11 @@ public class LigueConsole
 				{
 					ligue.addEmploye(getString("nom : "), 
 						getString("prenom : "), getString("mail : "), 
-						getString("password : "), LocalDate.now(), null);
+						getString("password : "), LocalDate.parse(getString("Date d'arrivée :")), LocalDate.parse(getString("Date de depart : ")));
 				}
 		);
 	}
-	
+
 	private Menu gererEmployes(Ligue ligue)
 	{
 		Menu menu = new Menu("Gérer les employés de " + ligue.getNom(), "e");
