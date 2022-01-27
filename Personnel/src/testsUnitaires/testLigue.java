@@ -27,7 +27,7 @@ class testLigue
 		Ligue ligueF = gestionPersonnel.addLigue("Football");
 		
 		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.now(), null);
-		Employe employe1 = ligueF.addEmploye("Dupont", "Geraldine", "g.dupont@gmail.com", "qwerty", LocalDate.now(), null); 
+		Employe employe1 = ligueF.addEmploye("Dupont", "Geraldine", "g.dupont@gmail.com", "qwerty", LocalDate.parse("2018-09-12") , LocalDate.parse("2023-02-23")); 
 		
 		assertEquals(employe, ligue.getEmployes().first());
 		assertEquals(employe1, ligueF.getEmployes().last());
