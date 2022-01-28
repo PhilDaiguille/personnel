@@ -58,11 +58,11 @@ public class EmployeConsole
 	}
 	private Option changerDateA(final Employe employe)
 	{
-		return new Option("Changer la date d'arrivée", "a", () -> {employe.setDateA(LocalDate.parse(getString("Nouvelle date d'arrivée : ")));});
+		return new Option("Changer la date d'arrivée", "a", () -> {employe.setDateA(LocalDate.parse(getString("Nouvelle date d'arrivée YYYY-MM-JJ : ")));});
 	}
 	private Option changerDateD(final Employe employe)
 	{
-		return new Option("Changer la date de départ", "d", () -> {employe.setDateD(LocalDate.parse(getString("Nouvelle date de départ : ")));});
+		return new Option("Changer la date de départ", "d", () -> {employe.setDateD(LocalDate.parse(getString("Nouvelle date de départ YYYY-MM-JJ : ")));});
 	}
 	
 

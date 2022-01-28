@@ -103,8 +103,8 @@ public class LigueConsole
 						getString("prenom : "), 
 						getString("mail : "), 
 						getString("password : "),
-						LocalDate.parse(getString("Date d'arrivée : ")), 
-						LocalDate.parse(getString("Date de depart : ")));
+						LocalDate.parse(getString("Date d'arrivée YYYY-MM-JJ : ")), 
+						LocalDate.parse(getString("Date de depart YYYY-MM-JJ : ")));
 					
 				}
 		);
