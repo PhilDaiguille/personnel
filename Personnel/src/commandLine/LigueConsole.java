@@ -92,21 +92,35 @@ public class LigueConsole
 				(element) -> editerLigue(element)
 				);
 	}
+	class ExceptionDate extends Exception
+	{
+	    public ExceptionDate()
+	    {
+	        System.out.println("Exception ExceptionDate has been raised...");
+	    }
+	    
+	    public String toString()
+	    {
+	      return "You tried to do an illegal assignement !";
+	    }
+	}
 	
 	private Option ajouterEmploye(final Ligue ligue)
 	{
 		return new Option("ajouter un employé", "a",
 				() -> 
 				{
-					ligue.addEmploye(getString("nom : "), 
+					ligue.addEmploye(
+						getString("nom : "), 
 						getString("prenom : "), 
 						getString("mail : "), 
-						getString("password : "), 
+						getString("password : "),
 						LocalDate.parse(getString("Date d'arrivée : ")), 
-						LocalDate.parse(getString("Date de depart : "))
-						);
+						LocalDate.parse(getString("Date de depart : ")));
+					
 				}
 		);
+		
 	}
 
 	private Menu gererEmployes(Ligue ligue)
