@@ -32,5 +32,15 @@ class testLigue
 		assertEquals(employe, ligue.getEmployes().first());
 		assertEquals(employe1, ligueF.getEmployes().last());
 	}
+	@Test
+	void SupprimerEmploye() throws SauvegardeImpossible
+	{
+		Ligue ligue = gestionPersonnel.addLigue("Casquette");
+		Employe employe = ligue.addEmploye("Bouchar", "Gérard", "g.bouchard@gmail.com", "azerty", null, null);
+		
+		employe.remove();
+		
+	}
+	
 	
 }
