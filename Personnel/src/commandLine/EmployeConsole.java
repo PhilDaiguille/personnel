@@ -20,7 +20,7 @@ public class EmployeConsole
 	{
 		return (employe) -> editerEmploye(employe);		
 	}
-
+	
 	Option editerEmploye(Employe employe)
 	{
 			Menu menu = new Menu("Gérer le compte " + employe.getNom(), "c");
