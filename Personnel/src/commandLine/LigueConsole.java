@@ -92,18 +92,6 @@ public class LigueConsole
 				(element) -> editerLigue(element)
 				);
 	}
-	class ExceptionDate extends Exception
-	{
-	    public ExceptionDate()
-	    {
-	        System.out.println("Exception ExceptionDate has been raised...");
-	    }
-	    
-	    public String toString()
-	    {
-	      return "You tried to do an illegal assignement !";
-	    }
-	}
 	
 	private Option ajouterEmploye(final Ligue ligue)
 	{
