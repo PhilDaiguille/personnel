@@ -15,11 +15,11 @@ public class Employe implements Serializable, Comparable<Employe>
 {
 	private static final long serialVersionUID = 4795721718037994734L;
 	private String nom, prenom, password, mail;
-	private LocalDate dateA, dateD;
+	private LocalDate dateArrivee, dateDepart;
 	private Ligue ligue;
 	private GestionPersonnel gestionPersonnel;
 	
-	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, LocalDate dateA, LocalDate dateD)
+	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, LocalDate dateArrivee, LocalDate dateDepart)
 	{
 		this.gestionPersonnel = gestionPersonnel;
 		this.nom = nom;
@@ -27,8 +27,8 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.password = password;
 		this.mail = mail;
 		this.ligue = ligue;
-		this.dateA = dateA;
-		this.dateD = dateD;
+		this.dateArrivee = dateArrivee;
+		this.dateDepart = dateDepart;
 	}
 	
 	/**
@@ -59,25 +59,25 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * Retourne la date de l'arrivée de l'employé.
 	 * @return le date de l'arrivée de l'employé. 
 	 */
-	public LocalDate getDateA()
+	public LocalDate getDateArrivee()
 	{
-		return dateA;
+		return dateArrivee;
 	}
-	public void setDateA(LocalDate dateA)
+	public void setDateArrivee(LocalDate dateArrivee)
 	{
-		this.dateA = dateA;
+		this.dateArrivee = dateArrivee;
 	}
 	/**
 	 * Retourne la date de départ de l'employé.
 	 * @return le date de départ de l'employé. 
 	 */
-	public LocalDate getDateD()
+	public LocalDate getDateDepart()
 	{
-		return dateD;
+		return dateDepart;
 	}
-	public void setDateD(LocalDate dateD)
+	public void setDateDepart(LocalDate dateDepart)
 	{
-		this.dateD = dateD;
+		this.dateDepart = dateDepart;
 	}
 	/**
 	 * Retourne le nom de l'employé.
@@ -202,7 +202,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	@Override
 	public String toString()
 	{
-		String res = nom + " " + prenom + " " + mail + " (" + dateA + "/" + dateD + ")" + "(";
+		String res = nom + " " + prenom + " " + mail + " (" + dateArrivee + "/" + dateDepart + ")" + "(";
 		if (estRoot())
 			res += "super-utilisateur";
 		else
