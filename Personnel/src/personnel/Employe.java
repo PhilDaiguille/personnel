@@ -63,16 +63,10 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		return dateA;
 	}
-	
-	/**
-	 * Change la date de d'arrivée de l'employé.
-	 * @param dateA la nouvelle date d'arrivée.
-	 */
 	public void setDateA(LocalDate dateA)
 	{
 		this.dateA = dateA;
 	}
-	
 	/**
 	 * Retourne la date de départ de l'employé.
 	 * @return le date de départ de l'employé. 
@@ -81,17 +75,10 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		return dateD;
 	}
-	
-	/**
-	 * Change la date de départ de l'employé.
-	 * @param dateD la nouvelle date de départ.
-	 */
-	
 	public void setDateD(LocalDate dateD)
 	{
 		this.dateD = dateD;
 	}
-	
 	/**
 	 * Retourne le nom de l'employé.
 	 * @return le nom de l'employé. 
