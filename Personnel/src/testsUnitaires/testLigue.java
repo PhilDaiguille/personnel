@@ -24,23 +24,52 @@ class testLigue
 	void addEmploye() throws SauvegardeImpossible
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
-		Ligue ligueF = gestionPersonnel.addLigue("Football");
-		
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.now(), null);
-		Employe employe1 = ligueF.addEmploye("Dupont", "Geraldine", "g.dupont@gmail.com", "qwerty", LocalDate.parse("2018-09-12") , LocalDate.parse("2023-02-23")); 
-		
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.now(), null); 
 		assertEquals(employe, ligue.getEmployes().first());
-		assertEquals(employe1, ligueF.getEmployes().last());
 	}
+	
 	@Test
-	void SupprimerEmploye() throws SauvegardeImpossible
+	void getNom() throws SauvegardeImpossible
 	{
-		Ligue ligue = gestionPersonnel.addLigue("Casquette");
-		Employe employe = ligue.addEmploye("Bouchar", "Gérard", "g.bouchard@gmail.com", "azerty", null, null);
-		
-		employe.remove();
-		
+		Ligue ligue = gestionPersonnel.addLigue("Football");
+		assertEquals("Football", ligue.getNom());
 	}
+	
+	@Test
+	void setNom() throws SauvegardeImpossible
+	{
+		Ligue ligue = gestionPersonnel.addLigue("Football");
+		ligue.setNom("Fléchettes");
+		assertEquals("Fléchettes", ligue.getNom());
+	}
+	
+	@Test
+	void toStringLigue() throws SauvegardeImpossible
+	{
+		Ligue ligue = gestionPersonnel.addLigue("Football");
+		assertEquals("Football", ligue.toString());
+	}
+	
+	
+	@Test
+	void setAdmin() throws SauvegardeImpossible
+	{
+		Ligue ligue = gestionPersonnel.addLigue("Football");
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", null, null);
+		ligue.setAdministrateur(employe);
+		assertEquals(employe, ligue.getAdministrateur());
+	}
+	
+	@Test
+	void remove() throws SauvegardeImpossible
+	{
+		Ligue ligue = gestionPersonnel.addLigue("Football");
+		int initSize = gestionPersonnel.getLigues().size();
+		ligue.remove();
+		assertEquals(initSize - 1, gestionPersonnel.getLigues().size());
+	}
+
+	
 	
 	
 }
