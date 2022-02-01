@@ -68,9 +68,14 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * Change la date de d'arrivée de l'employé.
 	 * @param dateArrivee la nouvelle date d'arrivée.
 	 */
-	public void setdateArrivee(LocalDate dateArrivee)
+	public void setdateArrivee(LocalDate dateArrivee) throws dateIncorrect
 	{
+
+		if (dateArrivee != null && dateDepart != null && dateDepart.isBefore(dateArrivee))
+			throw new dateIncorrect();
 		this.dateArrivee = dateArrivee;
+		this.update("date_arrivee");
+
 	}
 	
 	/**
@@ -87,10 +92,14 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * @param dateDepart la nouvelle date de départ.
 	 */
 	
-	public void setdateDepart(LocalDate dateDepart)
+	public void setdateDepart(LocalDate dateDepart) throws dateIncorrect
 	{
+		if (dateArrivee != null && dateDepart != null && dateArrivee.isAfter(dateDepart))
+			throw new dateIncorrect();
 		this.dateDepart = dateDepart;
+		this.update("date_depart");
 	}
+	
 	
 	/**
 	 * Retourne le nom de l'employé.
@@ -222,4 +231,17 @@ public class Employe implements Serializable, Comparable<Employe>
 			res += ligue.toString();
 		return res + ")";
 	}
+	
+	public void update(String column)
+	{
+		try {
+			gestionPersonnel.update(this, column);
+		} catch (SauvegardeImpossible e) {
+			
+			e.printStackTrace();
+		}
+	}
 }
+
+
+

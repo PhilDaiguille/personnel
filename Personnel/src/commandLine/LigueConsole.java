@@ -3,6 +3,7 @@ package commandLine;
 import static commandLineMenus.rendering.examples.util.InOut.getString;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 import commandLineMenus.List;
@@ -169,4 +170,17 @@ public class LigueConsole
 		return new Option("Supprimer", "d", () -> {ligue.remove();});
 	}
 	
+	private LocalDate getDate(String message)
+	{
+		while (true) {
+			try {
+				String date = getString(message);
+				return date.equals("") ? null : LocalDate.parse(date);
+			} catch (DateTimeParseException e) {
+				System.out.println("Date incorrect");
+			}
+		}
+	
+
+	}
 }

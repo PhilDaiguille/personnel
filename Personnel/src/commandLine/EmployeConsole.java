@@ -2,12 +2,15 @@ package commandLine;
 
 import static commandLineMenus.rendering.examples.util.InOut.getString;
 
+
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 import commandLineMenus.ListOption;
 import commandLineMenus.Menu;
 import commandLineMenus.Option;
 import personnel.Employe;
+import personnel.dateIncorrect;
 
 public class EmployeConsole 
 {
@@ -29,8 +32,8 @@ public class EmployeConsole
 			menu.add(changerPrenom(employe));
 			menu.add(changerMail(employe));
 			menu.add(changerPassword(employe));
-			menu.add(changerDateA(employe));
-			menu.add(changerDateD(employe));
+			menu.add(changerDateArrivee(employe, "1"));
+			menu.add(changerDateDepart(employe, "2"));
 			menu.addBack("q");
 			return menu;
 	}
@@ -56,13 +59,43 @@ public class EmployeConsole
 	{
 		return new Option("Changer le password", "x", () -> {employe.setPassword(getString("Nouveau password : "));});
 	}
-	private Option changerDateA(final Employe employe)
+	private Option changerDateArrivee(final Employe employe, String key)
 	{
-		return new Option("Changer la date d'arrivée", "a", () -> {employe.setdateArrivee(LocalDate.parse(getString("Nouvelle date d'arrivée YYYY-MM-JJ : ")));});
+		return new Option("Changer la date d'arrivée", key, () -> {
+			boolean verif = false;
+			
+			while (!verif) {
+				try {
+					String date = getString("Nouvelle date d'arrivée YYYY-MM-JJ : ");
+					
+					LocalDate dateArrivee = date.equals("") ? null : LocalDate.parse(date);
+					employe.setdateArrivee(dateArrivee);
+					verif = true;
+				}
+				catch (DateTimeParseException | dateIncorrect e) {
+					System.out.println("Date incorrect");
+				}
+			}
+		});
 	}
-	private Option changerDateD(final Employe employe)
+	private Option changerDateDepart(final Employe employe, String key)
 	{
-		return new Option("Changer la date de départ", "d", () -> {employe.setdateDepart(LocalDate.parse(getString("Nouvelle date de départ YYYY-MM-JJ : ")));});
+		return new Option("Changer la date de depart", key, () -> {
+			boolean verif = false;
+			
+			while (!verif) {
+				try {
+					String date = getString("Nouvelle date d'arrivée YYYY-MM-JJ : ");
+					
+					LocalDate dateDepart = date.equals("") ? null : LocalDate.parse(date);
+					employe.setdateDepart(dateDepart);
+					verif = true;
+				}
+				catch (DateTimeParseException | dateIncorrect e) {
+					System.out.println("Date incorrect");
+				}
+			}
+		});
 	}
 	
 
