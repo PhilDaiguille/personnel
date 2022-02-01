@@ -15,11 +15,11 @@ public class Employe implements Serializable, Comparable<Employe>
 {
 	private static final long serialVersionUID = 4795721718037994734L;
 	private String nom, prenom, password, mail;
-	private LocalDate dateA, dateD;
+	private LocalDate dateArrivee, dateDepart;
 	private Ligue ligue;
 	private GestionPersonnel gestionPersonnel;
 	
-	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, LocalDate dateA, LocalDate dateD)
+	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, LocalDate dateArrivee, LocalDate dateDepart)
 	{
 		this.gestionPersonnel = gestionPersonnel;
 		this.nom = nom;
@@ -27,8 +27,8 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.password = password;
 		this.mail = mail;
 		this.ligue = ligue;
-		this.dateA = dateA;
-		this.dateD = dateD;
+		this.dateArrivee = dateArrivee;
+		this.dateDepart = dateDepart;
 	}
 	
 	/**
@@ -59,37 +59,37 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * Retourne la date de l'arrivée de l'employé.
 	 * @return le date de l'arrivée de l'employé. 
 	 */
-	public LocalDate getDateA()
+	public LocalDate getdateArrivee()
 	{
-		return dateA;
+		return dateArrivee;
 	}
 	
 	/**
 	 * Change la date de d'arrivée de l'employé.
-	 * @param dateA la nouvelle date d'arrivée.
+	 * @param dateArrivee la nouvelle date d'arrivée.
 	 */
-	public void setDateA(LocalDate dateA)
+	public void setdateArrivee(LocalDate dateArrivee)
 	{
-		this.dateA = dateA;
+		this.dateArrivee = dateArrivee;
 	}
 	
 	/**
 	 * Retourne la date de départ de l'employé.
 	 * @return le date de départ de l'employé. 
 	 */
-	public LocalDate getDateD()
+	public LocalDate getdateDepart()
 	{
-		return dateD;
+		return dateDepart;
 	}
 	
 	/**
 	 * Change la date de départ de l'employé.
-	 * @param dateD la nouvelle date de départ.
+	 * @param dateDepart la nouvelle date de départ.
 	 */
 	
-	public void setDateD(LocalDate dateD)
+	public void setdateDepart(LocalDate dateDepart)
 	{
-		this.dateD = dateD;
+		this.dateDepart = dateDepart;
 	}
 	
 	/**
@@ -215,7 +215,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	@Override
 	public String toString()
 	{
-		String res = nom + " " + prenom + " " + mail + " (" + dateA + "/" + dateD + ")" + "(";
+		String res = nom + " " + prenom + " " + mail + " (" + dateArrivee + "/" + dateDepart + ")" + "(";
 		if (estRoot())
 			res += "super-utilisateur";
 		else
