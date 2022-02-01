@@ -20,7 +20,6 @@ public class EmployeConsole
 	{
 		return (employe) -> editerEmploye(employe);		
 	}
-	// MAGIE MAGIE DISPARAIT
 	
 	Option editerEmploye(Employe employe)
 	{
