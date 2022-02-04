@@ -175,7 +175,7 @@ public class LigueConsole
 		while (true) {
 			try {
 				String date = getString(message);
-				return date.equals("") ? null : LocalDate.parse(date);
+				return date.equals("") ? null : LocalDate.parse(null);
 			} catch (DateTimeParseException e) {
 				System.out.println("Date incorrect");
 			}

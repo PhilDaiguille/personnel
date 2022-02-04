@@ -32,8 +32,8 @@ public class EmployeConsole
 			menu.add(changerPrenom(employe));
 			menu.add(changerMail(employe));
 			menu.add(changerPassword(employe));
-			menu.add(changerDateArrivee(employe, "1"));
-			menu.add(changerDateDepart(employe, "2"));
+			menu.add(changerDateArrivee(employe));
+			menu.add(changerDateDepart(employe));
 			menu.addBack("q");
 			return menu;
 	}
@@ -59,9 +59,9 @@ public class EmployeConsole
 	{
 		return new Option("Changer le password", "x", () -> {employe.setPassword(getString("Nouveau password : "));});
 	}
-	private Option changerDateArrivee(final Employe employe, String key)
+	private Option changerDateArrivee(final Employe employe)
 	{
-		return new Option("Changer la date d'arrivée", key, () -> {
+		return new Option("Changer la date d'arrivée", "a", () -> {
 			boolean verif = false;
 			
 			while (!verif) {
@@ -78,9 +78,9 @@ public class EmployeConsole
 			}
 		});
 	}
-	private Option changerDateDepart(final Employe employe, String key)
+	private Option changerDateDepart(final Employe employe)
 	{
-		return new Option("Changer la date de depart", key, () -> {
+		return new Option("Changer la date de depart", "d", () -> {
 			boolean verif = false;
 			
 			while (!verif) {

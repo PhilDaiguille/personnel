@@ -22,6 +22,7 @@ class testEmploye
 		assertEquals(employe, ligue.getEmployes().first());
 		assertEquals(employe1, ligueF.getEmployes().last());
 	}
+	
 	@Test
 	void SupprimerEmploye() throws SauvegardeImpossible
 	{
