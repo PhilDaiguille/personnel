@@ -28,7 +28,6 @@ class testEmploye
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Casquette");
 		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.now(), null);
-		
 		employe.remove();
 		
 	}

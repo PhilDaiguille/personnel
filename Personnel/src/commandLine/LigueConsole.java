@@ -91,6 +91,7 @@ public class LigueConsole
 		return new List<Ligue>("Sélectionner une ligue", "e", 
 				() -> new ArrayList<>(gestionPersonnel.getLigues()),
 				(element) -> editerLigue(element)
+					
 				);
 	}
 	
@@ -109,6 +110,7 @@ public class LigueConsole
 					
 				}
 		);
+		
 		
 	}
 
