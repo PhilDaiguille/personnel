@@ -228,7 +228,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	@Override
 	public String toString()
 	{
-		String res = nom + " " + prenom + " " + mail + " (" + dateArrivee + "/" + dateDepart + ")" + "(";
+		String res = nom + " " + prenom + " " + mail + " (" + dateArrivee + "/" + dateDepart + ") " + "(";
 		if (estRoot())
 			res += "super-utilisateur";
 		else

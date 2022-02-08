@@ -64,7 +64,7 @@ class testLigue
 	void getAdmin() throws SauvegardeImpossible
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Football");
-		assertEquals("root   (2022-02-08/null)(super-utilisateur)", ligue.getAdministrateur().toString());
+		assertEquals("root   (null/null) (super-utilisateur)", ligue.getAdministrateur().toString());
 	}
 	
 	@Test
