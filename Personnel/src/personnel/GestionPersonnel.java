@@ -25,7 +25,6 @@ public class GestionPersonnel implements Serializable
 	public final static int SERIALIZATION = 1, JDBC = 2,
 			TYPE_PASSERELLE = JDBC;  
 	
-	@SuppressWarnings("unused")
 	private static Passerelle passerelle = TYPE_PASSERELLE == JDBC ? new jdbc.JDBC() : new serialisation.Serialization();	
 	
 	/**

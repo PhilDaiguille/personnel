@@ -70,7 +70,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	 */
 	public void setdateArrivee(LocalDate dateArrivee) throws dateIncorrect
 	{
-
+		
 		if (dateArrivee != null && dateDepart != null && dateDepart.isBefore(dateArrivee))
 			throw new dateIncorrect();
 		this.dateArrivee = dateArrivee;
@@ -119,6 +119,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	public void setNom(String nom)
 	{
 		this.nom = nom;
+		this.update("nom");
 	}
 
 	/**
@@ -139,6 +140,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	public void setPrenom(String prenom)
 	{
 		this.prenom = prenom;
+		this.update("prenom");
 	}
 
 	/**
@@ -159,6 +161,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	public void setMail(String mail)
 	{
 		this.mail = mail;
+		this.update("mail");
 	}
 
 	/**
@@ -182,6 +185,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	public void setPassword(String password)
 	{
 		this.password= password;
+		this.update("password");
 	}
 
 	/**

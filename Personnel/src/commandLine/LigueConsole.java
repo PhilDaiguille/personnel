@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import commandLineMenus.List;
 import commandLineMenus.Menu;
 import commandLineMenus.Option;
-
+import personnel.Ligue;
+import personnel.Employe;
 import personnel.*;
 
 public class LigueConsole 
@@ -35,7 +36,11 @@ public class LigueConsole
 
 	private Option afficherLigues()
 	{
-		return new Option("Afficher les ligues", "l", () -> {System.out.println(gestionPersonnel.getLigues());});
+		return new Option("Afficher les ligues", "l", () -> {
+			
+			System.out.println(gestionPersonnel.getLigues());
+			
+		});
 	}
 
 	private Option afficher(final Ligue ligue)
@@ -73,7 +78,7 @@ public class LigueConsole
 		Menu menu = new Menu("Editer " + ligue.getNom());
 		menu.add(afficher(ligue));
 		menu.add(gererEmployes(ligue));
-		//menu.add(changerAdministrateur(ligue));
+		menu.add(changerAdministrateur(ligue));
 		menu.add(changerNom(ligue));
 		menu.add(supprimer(ligue));
 		menu.addBack("q");
@@ -82,7 +87,7 @@ public class LigueConsole
 
 	private Option changerNom(final Ligue ligue)
 	{
-		return new Option("Renommer", "r", 
+		return new Option("Renommer la ligue", "r", 
 				() -> {ligue.setNom(getString("Nouveau nom : "));});
 	}
 
@@ -150,26 +155,30 @@ public class LigueConsole
 	{
 		return new List<>("Supprimer un employé", "s", 
 				() -> new ArrayList<>(ligue.getEmployes()),
-				(index, element) -> {element.remove();}
+				(index, element) -> {
+					element.remove();}
 				);
 	}
 	
 	private List<Employe> changerAdministrateur(final Ligue ligue)
 	{
-		return null;
+		return new List<>("Changer l'administrateur d'une ligue", "a", 
+				() -> new ArrayList<>(ligue.getEmployes()),
+					employeConsole.editerEmploye()
+				);
 	}		
 
 	private List<Employe> modifierEmploye(final Ligue ligue)
 	{
 		return new List<>("Modifier un employé", "e", 
 				() -> new ArrayList<>(ligue.getEmployes()),
-				employeConsole.editerEmploye()
+					employeConsole.editerEmploye()
 				);
 	}
 	
 	private Option supprimer(Ligue ligue)
 	{
-		return new Option("Supprimer", "d", () -> {ligue.remove();});
+		return new Option("Supprimer la ligue", "d", () -> {ligue.remove();});
 	}
 	
 	private LocalDate getDate(String message)

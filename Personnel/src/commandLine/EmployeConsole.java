@@ -10,6 +10,7 @@ import commandLineMenus.ListOption;
 import commandLineMenus.Menu;
 import commandLineMenus.Option;
 import personnel.Employe;
+import personnel.Ligue;
 import personnel.dateIncorrect;
 
 public class EmployeConsole 
@@ -28,6 +29,7 @@ public class EmployeConsole
 	{
 			Menu menu = new Menu("Gérer le compte " + employe.getNom(), "c");
 			menu.add(afficher(employe));
+			menu.add(setAdmin(employe));
 			menu.add(changerNom(employe));
 			menu.add(changerPrenom(employe));
 			menu.add(changerMail(employe));
@@ -47,18 +49,39 @@ public class EmployeConsole
 	
 	private Option changerPrenom(final Employe employe)
 	{
-		return new Option("Changer le prénom", "p", () -> {employe.setPrenom(getString("Nouveau prénom : "));});
+		return new Option("Changer le prénom", "p", () -> {
+			
+			employe.setPrenom(getString("Nouveau prénom : "));
+			
+		});
 	}
 	
 	private Option changerMail(final Employe employe)
 	{
-		return new Option("Changer le mail", "e", () -> {employe.setMail(getString("Nouveau mail : "));});
+		return new Option("Changer le mail", "e", () -> {
+			
+			employe.setMail(getString("Nouveau mail : "));
+			
+		});
 	}
 	
 	private Option changerPassword(final Employe employe)
 	{
-		return new Option("Changer le password", "x", () -> {employe.setPassword(getString("Nouveau password : "));});
+		return new Option("Changer le password", "x", () -> {
+			
+			employe.setPassword(getString("Nouveau password : "));
+			
+		});
 	}
+	
+	private Option setAdmin(final Employe employe) {
+		Ligue ligue = employe.getLigue();
+		return new Option("Met administrateur de la ligue", "s", () -> {
+			ligue.setAdministrateur(employe);
+			
+		});
+	}
+
 	private Option changerDateArrivee(final Employe employe)
 	{
 		return new Option("Changer la date d'arrivée", "a", () -> {
