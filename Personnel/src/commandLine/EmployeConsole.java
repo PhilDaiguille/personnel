@@ -103,12 +103,12 @@ public class EmployeConsole
 	}
 	private Option changerDateDepart(final Employe employe)
 	{
-		return new Option("Changer la date de depart", "d", () -> {
+		return new Option("Changer la date de départ", "d", () -> {
 			boolean verif = false;
 			
 			while (!verif) {
 				try {
-					String date = getString("Nouvelle date d'arrivée YYYY-MM-JJ : ");
+					String date = getString("Nouvelle date de départ YYYY-MM-JJ : ");
 					
 					LocalDate dateDepart = date.equals("") ? null : LocalDate.parse(date);
 					employe.setdateDepart(dateDepart);

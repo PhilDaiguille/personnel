@@ -100,7 +100,7 @@ public class LigueConsole
 				);
 	}
 	
-	private Option ajouterEmploye(final Ligue ligue)
+	private Option ajouterEmploye(final Ligue ligue) throws dateIncorrect
 	{
 		return new Option("ajouter un employé", "a",
 				() -> 
@@ -110,8 +110,8 @@ public class LigueConsole
 						getString("prenom : "), 
 						getString("mail : "), 
 						getString("password : "),
-						LocalDate.parse(getString("Date d'arrivée YYYY-MM-JJ : ")), 
-						LocalDate.parse(getString("Date de depart YYYY-MM-JJ : ")));
+						getDate("Date d'arrivée YYYY-MM-JJ : "), 
+						getDate("Date de depart YYYY-MM-JJ : "));
 					
 				}
 		);
@@ -178,7 +178,11 @@ public class LigueConsole
 	
 	private Option supprimer(Ligue ligue)
 	{
-		return new Option("Supprimer la ligue", "d", () -> {ligue.remove();});
+		return new Option("Supprimer la ligue", "d", () -> {
+			
+			ligue.remove();
+			
+		});
 	}
 	
 	private LocalDate getDate(String message)
@@ -186,7 +190,12 @@ public class LigueConsole
 		while (true) {
 			try {
 				String date = getString(message);
-				return date.equals("") ? null : LocalDate.parse(null);
+				if(date.equals("")) {
+					return null;
+				}
+				else {
+					return LocalDate.parse(null);
+				}
 			} catch (DateTimeParseException e) {
 				System.out.println("Date incorrect");
 			}
@@ -194,4 +203,6 @@ public class LigueConsole
 	
 
 	}
+	
+	
 }
