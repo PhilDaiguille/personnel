@@ -126,7 +126,7 @@ class testEmploye
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Football");
 		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.parse("2019-12-28"), LocalDate.parse("2020-11-09"));
-		assertEquals(LocalDate.parse("2019-12-28"), employe.getdateArrivee());
+		assertEquals(LocalDate.parse("2019-12-28"), employe.getdateArrivee()) ;
 	}
 	
 	@Test
