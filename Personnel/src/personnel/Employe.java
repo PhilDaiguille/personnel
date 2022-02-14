@@ -230,7 +230,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		String res = nom + " " + prenom + " " + mail + " (" + dateArrivee + "/" + dateDepart + ") " + "(";
 		if (estRoot()) {
-			res += "Super-utilisateur";
+			res += "super-utilisateur";
 		}
 		else if (this == ligue.getAdministrateur()) {
 			res += "Admin de la ligue : ";
