@@ -111,7 +111,7 @@ public class LigueConsole
 						getString("mail : "), 
 						getString("password : "),
 						getDate("Date d'arrivée YYYY-MM-JJ : "), 
-						getDate("Date de depart YYYY-MM-JJ : "));
+						getDate("Date de départ YYYY-MM-JJ : "));
 					
 				}
 		);
@@ -194,9 +194,10 @@ public class LigueConsole
 					return null;
 				}
 				else {
-					return LocalDate.parse(null);
+					return LocalDate.parse(date);
 				}
-			} catch (DateTimeParseException e) {
+			} 
+			catch (DateTimeParseException e) {
 				System.out.println("Date incorrect");
 			}
 		}
