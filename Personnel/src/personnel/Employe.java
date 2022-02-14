@@ -233,7 +233,7 @@ public class Employe implements Serializable, Comparable<Employe>
 			res += "Super-utilisateur";
 		}
 		else if (this == ligue.getAdministrateur()) {
-			res += "|-Admin-|";
+			res += "Admin de la ligue : ";
 			res += ligue.toString();
 		}
 		else {

@@ -9,6 +9,7 @@ import java.time.format.DateTimeParseException;
 import commandLineMenus.ListOption;
 import commandLineMenus.Menu;
 import commandLineMenus.Option;
+
 import personnel.Employe;
 import personnel.Ligue;
 import personnel.dateIncorrect;
@@ -17,7 +18,9 @@ public class EmployeConsole
 {
 	private Option afficher(final Employe employe)
 	{
-		return new Option("Afficher l'employé", "l", () -> {System.out.println(employe);});
+		return new Option("Afficher l'employé", "l", () -> {
+			System.out.println(employe);
+		});
 	}
 
 	ListOption<Employe> editerEmploye()
@@ -27,7 +30,7 @@ public class EmployeConsole
 	
 	Option editerEmploye(Employe employe)
 	{
-			Menu menu = new Menu("Gérer le compte " + employe.getNom(), "c");
+			Menu menu = new Menu("Gérer le compte de : " + employe.getNom(), "c");
 			menu.add(afficher(employe));
 			menu.add(setAdmin(employe));
 			menu.add(changerNom(employe));
@@ -36,6 +39,7 @@ public class EmployeConsole
 			menu.add(changerPassword(employe));
 			menu.add(changerDateArrivee(employe));
 			menu.add(changerDateDepart(employe));
+			menu.add(supprimerEmploye(employe));
 			menu.addBack("q");
 			return menu;
 	}
@@ -81,7 +85,13 @@ public class EmployeConsole
 			
 		});
 	}
-
+	
+	private Option supprimerEmploye(final Employe employe) {
+		return new Option("Supprimer l'employé", "r", () -> {
+			employe.remove();
+		});
+		
+	}
 	private Option changerDateArrivee(final Employe employe)
 	{
 		return new Option("Changer la date d'arrivée", "a", () -> {

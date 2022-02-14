@@ -98,6 +98,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	{
 		return Collections.unmodifiableSortedSet(employes);
 	}
+	
 
 	/**
 	 * Ajoute un employé dans la ligue. Cette méthode 
