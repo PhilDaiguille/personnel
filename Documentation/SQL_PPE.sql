@@ -4,8 +4,8 @@ CREATE TABLE `employe` (
   `prenom` varchar(42) DEFAULT NULL,
   `mail` varchar(42) DEFAULT NULL,
   `password` varchar(42) DEFAULT NULL,
-  `date_arrivee` DATE,
-  `date_depart` DATE,
+  `date_arrivee` date DEFAULT NULL,
+  `date_depart` date DEFAULT NULL,
   `habilitation` varchar(42) DEFAULT NULL,
   `id_ligue` int(255) DEFAULT NULL,
   PRIMARY KEY (`id_employee`)
