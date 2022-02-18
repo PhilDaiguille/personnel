@@ -27,7 +27,7 @@ class testEmploye
 	void SupprimerEmploye() throws SauvegardeImpossible
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Casquette");
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.now(), null);
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.parse("2019-11-12"), LocalDate.parse("2020-11-12"));
 		employe.remove();
 		
 	}
@@ -35,7 +35,7 @@ class testEmploye
 	void isAdmin() throws SauvegardeImpossible
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Football");
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.now(), null);
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.parse("2019-11-12"), LocalDate.parse("2020-11-12"));
 		assertFalse(employe.estAdmin(ligue));
 		ligue.setAdministrateur(employe);
 		assertTrue(employe.estAdmin(ligue));
@@ -46,7 +46,7 @@ class testEmploye
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Football");
 		Employe employe = gestionPersonnel.getRoot();
-		Employe employe1 = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.now(), null);
+		Employe employe1 = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.parse("2019-11-12"), LocalDate.parse("2020-11-12"));
 		assertTrue(employe.estRoot());
 		assertFalse(employe1.estRoot());
 	}
@@ -55,7 +55,7 @@ class testEmploye
 	void getNom() throws SauvegardeImpossible
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Football");
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.now(), null);
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.parse("2018-12-11"), LocalDate.parse("2020-11-12"));
 		assertEquals("Bouchard", employe.getNom());
 	}
 
@@ -63,16 +63,16 @@ class testEmploye
 	void setNom() throws SauvegardeImpossible
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Football");
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.now(), null);
-		employe.setNom("John");
-		assertEquals("John", employe.getNom());
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.parse("2018-12-11"), null);
+		employe.setNom("Samuel");
+		assertEquals("Samuel", employe.getNom());
 	}
 	
 	@Test
 	void getPrenom() throws SauvegardeImpossible
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Football");
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.now(), null);
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.parse("2018-12-11"), null);
 		assertEquals("Gérard", employe.getPrenom());
 	}
 	
@@ -89,7 +89,7 @@ class testEmploye
 	void getMail() throws SauvegardeImpossible
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Football");
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.now(), null);
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.parse("2018-12-11"), null);
 		assertEquals("g.bouchard@gmail.com", employe.getMail());
 		
 	}
@@ -98,7 +98,7 @@ class testEmploye
 	void setMail() throws SauvegardeImpossible
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Football");
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.now(), null);
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.parse("2018-12-11"), null);
 		employe.setMail("g.bouchard@gmail.com");
 		assertEquals("g.bouchard@gmail.com", employe.getMail());
 	}
@@ -107,7 +107,7 @@ class testEmploye
 	void getLigue() throws SauvegardeImpossible
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Football");
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.now(), null);
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.parse("2018-12-11"), null);
 		assertEquals(ligue, employe.getLigue());
 	}
 	
