@@ -80,7 +80,7 @@ public class EmployeConsole
 	
 	private Option setAdmin(final Employe employe) {
 		Ligue ligue = employe.getLigue();
-		return new Option("Met administrateur de la ligue", "s", () -> {
+		return new Option("Mettre administrateur de la ligue", "s", () -> {
 			ligue.setAdministrateur(employe);
 			
 		});
