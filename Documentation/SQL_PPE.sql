@@ -1,5 +1,5 @@
 CREATE TABLE `employe` (
-  `id_employee` int(255) NOT NULL AUTO_INCREMENT,
+  `id_employee` int(255)  AUTO_INCREMENT,
   `nom` varchar(42) DEFAULT NULL,
   `prenom` varchar(42) DEFAULT NULL,
   `mail` varchar(42) DEFAULT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE `employe` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `ligue` (
-   `id_ligue` int(255) NOT NULL AUTO_INCREMENT,
+   `id_ligue` int(255) AUTO_INCREMENT,
    `nom_ligue` varchar(42) DEFAULT NULL,
   PRIMARY KEY (`id_ligue`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
