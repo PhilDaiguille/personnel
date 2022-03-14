@@ -1,4 +1,4 @@
-<div style="text-align:center">
+<div align="center">
 
 # Personnel - PROJET G <br> | BTS SIO SLAM2 |
 
