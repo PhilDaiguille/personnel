@@ -1,4 +1,14 @@
-# Personnel - PROJET G BTS SIO SLAM2
+<div style="text-align:center">
+
+# Personnel - PROJET G <br> | BTS SIO SLAM2 |
+
+</div>
+
+## Groupe G: 
+- Quentin([Tinou95](https://github.com/Tinou95))
+- Samuel([Samalairbien](https://github.com/Samalairbien))
+- Philippe([PhilDaiguille](https://github.com/Tinou95))
+
 Un des responsables de la M2L, utilise une application pour gérer les employés des ligues. L’application est mise à votre disposition par le biais des ressources suivantes :
 
     - Le code source sur Github.
