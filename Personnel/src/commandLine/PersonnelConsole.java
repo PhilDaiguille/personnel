@@ -22,6 +22,9 @@ public class PersonnelConsole
 		menuPrincipal().start();
 	}
 	
+	
+	//Retour au menu principal
+	
 	private Menu menuPrincipal()
 	{
 		Menu menu = new Menu("Gestion du personnel des ligues");
@@ -39,6 +42,8 @@ public class PersonnelConsole
 		menu.addBack("r");
 		return menu;
 	}
+	
+	//Enregistrer avant de quitter
 	
 	private Option quitterEtEnregistrer()
 	{
@@ -58,10 +63,14 @@ public class PersonnelConsole
 			);
 	}
 	
+	//Quitter sans enregistrer
+	
 	private Option quitterSansEnregistrer()
 	{
 		return new Option("Quitter sans enregistrer", "a", Action.QUIT);
 	}
+	
+	//Verifie le mot de passe
 	
 	private boolean verifiePassword()
 	{
