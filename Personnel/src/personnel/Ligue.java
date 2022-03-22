@@ -61,6 +61,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	public void setNom(String nom)
 	{
 		this.nom = nom;
+		this.update(nom);
 	}
 
 	/**
@@ -126,9 +127,10 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	/**
 	 * Supprime la ligue, entraîne la suppression de tous les employés
 	 * de la ligue.
+	 * @throws SauvegardeImpossible 
 	 */
 	
-	public void remove()
+	public void remove() throws SauvegardeImpossible
 	{
 		gestionPersonnel.remove(this);
 	}
@@ -144,6 +146,19 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	public String toString()
 	{
 		return nom;
+	}
+	public void update(String column)
+	{
+		try {
+			gestionPersonnel.update(this);
+		} catch (SauvegardeImpossible e) {
+			
+			e.printStackTrace();
+		}
+	}
+
+	public int getId() {
+		return id;
 	}
 	
 
