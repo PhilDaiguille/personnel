@@ -218,6 +218,7 @@ public class Employe implements Serializable, Comparable<Employe> {
 			e.printStackTrace();
 		}
 	}
+		
 
 	// SET ET GET ADMINISTRATEUR
 
@@ -240,6 +241,11 @@ public class Employe implements Serializable, Comparable<Employe> {
 			if (estAdmin(getLigue()))
 				getLigue().setAdministrateur(root);
 			getLigue().remove(this);
+			try {
+				gestionPersonnel.delete(this);
+			} catch (SauvegardeImpossible e) {
+				e.printStackTrace();
+			}
 		} else
 			throw new ImpossibleDeSupprimerRoot();
 	}

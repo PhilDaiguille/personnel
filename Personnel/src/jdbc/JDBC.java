@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.util.Map;
 
 import personnel.*;
 
@@ -49,12 +48,8 @@ public class JDBC implements Passerelle {
 					String prenom = employe.getString("prenom");
 					String mail = employe.getString("mail");
 					String password = employe.getString("password");
-					LocalDate date_arrivee = employe.getDate("date_arrivee") != null
-							? LocalDate.parse(employe.getString("date_arrivee"))
-							: null;
-					LocalDate date_depart = employe.getDate("date_depart") != null
-							? LocalDate.parse(employe.getString("date_depart"))
-							: null;
+					LocalDate date_arrivee = employe.getDate("date_arrivee") != null ? LocalDate.parse(employe.getString("date_arrivee")) : null;
+					LocalDate date_depart = employe.getDate("date_depart") != null ? LocalDate.parse(employe.getString("date_depart")) : null;
 
 					Employe employee = ligue.addEmploye(nom, prenom, mail, password, date_arrivee, date_depart, id);
 
@@ -105,7 +100,7 @@ public class JDBC implements Passerelle {
 			return id.getInt(1);
 
 		} catch (SQLException exception) {
-
+			exception.printStackTrace();
 			throw new SauvegardeImpossible(exception);
 		}
 	}
@@ -113,8 +108,7 @@ public class JDBC implements Passerelle {
 	public void insertRoot(Employe employe) throws SauvegardeImpossible {
 		try {
 			PreparedStatement instruction;
-			instruction = connection.prepareStatement(
-					"INSERT INTO employe (nom, prenom, mail, password, habilitation) VALUES (?,?,?,?,?)");
+			instruction = connection.prepareStatement("INSERT INTO employe (nom, prenom, mail, password, habilitation) VALUES (?,?,?,?,?)");
 			instruction.setString(1, employe.getNom());
 			instruction.setString(2, employe.getPrenom());
 			instruction.setString(3, employe.getMail());
@@ -122,6 +116,7 @@ public class JDBC implements Passerelle {
 			instruction.setInt(5, 1);
 			instruction.executeUpdate();
 		} catch (SQLException exception) {
+			exception.printStackTrace();
 			throw new SauvegardeImpossible(exception);
 		}
 	}
@@ -145,7 +140,7 @@ public class JDBC implements Passerelle {
 			System.out.print("insert employé réussi");
 			return id.getInt(1);
 		} catch (SQLException exception) {
-
+			exception.printStackTrace();
 			throw new SauvegardeImpossible(exception);
 		}
 	}
@@ -166,23 +161,23 @@ public class JDBC implements Passerelle {
 			instruction.setInt(2, ligue.getId());
 			instruction.executeUpdate();
 			System.out.print("Update ligue réussi");
-		} catch (SQLException e) {
-
-			throw new SauvegardeImpossible(e);
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
 		}
 	}
 
 	@Override
-	public void deleteEmploye(Employe emp) throws SauvegardeImpossible {
+	public void deleteEmploye(Employe employe) throws SauvegardeImpossible {
 		try {
 			PreparedStatement instruction;
 			instruction = connection.prepareStatement("DELETE FROM employe WHERE id_employee = ?");
-			instruction.setInt(1, emp.getId());
+			instruction.setInt(1, employe.getId());
 			instruction.executeUpdate();
 			System.out.print("Delete employé réussi");
-		} catch (SQLException e) {
-
-			throw new SauvegardeImpossible(e);
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
 		}
 	}
 
@@ -229,11 +224,14 @@ public class JDBC implements Passerelle {
 			}
 			instruction.setInt(2, employe.getId());
 			instruction.executeUpdate();
-		} catch (SQLException e) {
-			throw new SauvegardeImpossible(e);
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
 		}
 	}
 
+	// ADMIN 
+	
 	@Override
 	public void removeAdmin(Ligue ligue) throws SauvegardeImpossible {
 		try {
@@ -241,8 +239,9 @@ public class JDBC implements Passerelle {
 			instruction = connection.prepareStatement("UPDATE employe SET habilitation = 0 WHERE id_ligue = ?");
 			instruction.setInt(1, ligue.getId());
 			instruction.executeUpdate();
-		} catch (SQLException e) {
-			throw new SauvegardeImpossible(e);
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
 		}
 	}
 
@@ -255,8 +254,9 @@ public class JDBC implements Passerelle {
 			instruction.setInt(2, employe.getId());
 			instruction.setInt(3, employe.getLigue().getId());
 			instruction.executeUpdate();
-		} catch (SQLException e) {
-			throw new SauvegardeImpossible(e);
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
 		}
 	}
 
@@ -282,8 +282,9 @@ public class JDBC implements Passerelle {
 				root.setPassword(password);
 			}
 			return root;
-		} catch (SQLException e) {
-			throw new SauvegardeImpossible(e);
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
 		}
 	}
 
