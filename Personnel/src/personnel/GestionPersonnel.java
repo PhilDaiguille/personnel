@@ -142,14 +142,14 @@ public class GestionPersonnel implements Serializable {
 
 	void changerAdmin(Employe employe) {
 		try {
-			passerelle.newAdmin(employe);
+			passerelle.nouveauAdmin(employe);
 		} catch (SauvegardeImpossible e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void rootBdd() throws SauvegardeImpossible {
+	public void RootBDD() throws SauvegardeImpossible {
 		root.setId(1);
-		root = passerelle.bddRoot(root);
+		root = passerelle.RootBDD(root);
 	}
 }

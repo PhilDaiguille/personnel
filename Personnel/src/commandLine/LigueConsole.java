@@ -88,8 +88,12 @@ public class LigueConsole {
 
 	private Option ajouterEmploye(final Ligue ligue) {
 		return new Option("ajouter un employé", "a", () -> {
-			ligue.addEmploye(getString("nom : "), getString("prenom : "), getString("mail : "),
-					getString("password : "), getDate("Date d'arrivée YYYY-MM-JJ : "),
+			ligue.addEmploye(
+					getString("nom : "), 
+					getString("prenom : "), 
+					getString("mail : "),
+					getString("password : "), 
+					getDate("Date d'arrivée YYYY-MM-JJ : "),
 					getDate("Date de départ YYYY-MM-JJ : "));
 
 		});

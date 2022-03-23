@@ -83,10 +83,14 @@ public class Ligue implements Serializable, Comparable<Ligue> {
 
 	public void setAdministrateur(Employe administrateur) {
 		Employe root = gestionPersonnel.getRoot();
-		if (administrateur != root && administrateur.getLigue() != this)
+		if (administrateur != root && administrateur.getLigue() != this) {
 			throw new DroitsInsuffisants();
+		}
 		this.administrateur = administrateur;
+		gestionPersonnel.changerAdmin(administrateur);
 	}
+	
+
 
 	/**
 	 * Retourne les employés de la ligue.
@@ -107,7 +111,6 @@ public class Ligue implements Serializable, Comparable<Ligue> {
 	 * @param mail     l'adresse mail de l'employé.
 	 * @param password le password de l'employé.
 	 * @param id
-	 * @param id2
 	 * @param date     la date d'arrivée
 	 * @return l'employé créé.
 	 */
@@ -150,6 +153,7 @@ public class Ligue implements Serializable, Comparable<Ligue> {
 		gestionPersonnel.removeAdmin(this);
 		administrateur = gestionPersonnel.getRoot();
 	}
+	
 
 	public void update(String nom) {
 		try {
@@ -170,9 +174,5 @@ public class Ligue implements Serializable, Comparable<Ligue> {
 		return nom;
 	}
 
-	public void changeAdmin(Employe employe) {
-		this.administrateur = employe;
-		gestionPersonnel.changerAdmin(employe);
-	}
 
 }

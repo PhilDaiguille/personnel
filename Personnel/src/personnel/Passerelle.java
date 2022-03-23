@@ -25,10 +25,10 @@ public interface Passerelle {
 	
 	// ROOT / ADMIN
 
-	public void newAdmin(Employe employe) throws SauvegardeImpossible;
+	public void nouveauAdmin(Employe employe) throws SauvegardeImpossible;
 
 	public void removeAdmin(Ligue ligue) throws SauvegardeImpossible;
 
-	public Employe bddRoot(Employe root) throws SauvegardeImpossible;
+	public Employe RootBDD(Employe root) throws SauvegardeImpossible;
 
 }

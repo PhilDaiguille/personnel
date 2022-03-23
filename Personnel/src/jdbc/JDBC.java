@@ -115,6 +115,7 @@ public class JDBC implements Passerelle {
 			instruction.setString(4, employe.getPassword());
 			instruction.setInt(5, 1);
 			instruction.executeUpdate();
+			System.out.print("L'insert du root réussi");
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 			throw new SauvegardeImpossible(exception);
@@ -219,11 +220,16 @@ public class JDBC implements Passerelle {
 			    break;
 			  case "date_depart":
 				  instruction.setDate(1, employe.getdateDepart() == null ? null : Date.valueOf(employe.getdateDepart()));
+				break;
+			  case "habilitation":
+				  instruction.setInt(1, employe.getAdministrateur());
+				break;
 			  default:
-				  System.out.print("nul");
+				  System.err.print("nul");
 			}
 			instruction.setInt(2, employe.getId());
 			instruction.executeUpdate();
+			System.out.print("Changement de l'employé réussi");
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 			throw new SauvegardeImpossible(exception);
@@ -246,10 +252,10 @@ public class JDBC implements Passerelle {
 	}
 
 	@Override
-	public void newAdmin(Employe employe) throws SauvegardeImpossible {
+	public void nouveauAdmin(Employe employe) throws SauvegardeImpossible {
 		try {
 			PreparedStatement instruction;
-			instruction = connection.prepareStatement("UPDATE employe SET habilitation = (CASE WHEN id_employee = ? THEN 1 WHEN id_employee <> ? THEN 0 END) WHERE id_ligue = ?");
+			instruction = connection.prepareStatement("UPDATE employe SET habilitation = (CASE WHEN id_employee = ? THEN 1 WHEN id_employee != ? THEN 0 END) WHERE id_ligue = ?");
 			instruction.setInt(1, employe.getId());
 			instruction.setInt(2, employe.getId());
 			instruction.setInt(3, employe.getLigue().getId());
@@ -261,7 +267,7 @@ public class JDBC implements Passerelle {
 	}
 
 	@Override
-	public Employe bddRoot(Employe root) throws SauvegardeImpossible {
+	public Employe RootBDD(Employe root) throws SauvegardeImpossible {
 		try {
 			Statement intruction = connection.createStatement();
 			String requete = "SELECT * FROM employe WHERE habilitation = 1";
@@ -272,10 +278,14 @@ public class JDBC implements Passerelle {
 			}
 
 			else {
-				String nom = (result.getString("nom") != null) ? result.getString("nom") : "";
-				String prenom = (result.getString("prenom") != null) ? result.getString("prenom") : "";
-				String mail = (result.getString("mail") != null) ? result.getString("mail") : "";
-				String password = (result.getString("password") != null) ? result.getString("password") : "";
+				String nom = (
+						result.getString("nom") != null) ? result.getString("nom") : "";
+				String prenom = (
+						result.getString("prenom") != null) ? result.getString("prenom") : "";
+				String mail = (
+						result.getString("mail") != null) ? result.getString("mail") : "";
+				String password = (
+						result.getString("password") != null) ? result.getString("password") : "";
 				root.setNom(nom);
 				root.setPrenom(prenom);
 				root.setMail(mail);
