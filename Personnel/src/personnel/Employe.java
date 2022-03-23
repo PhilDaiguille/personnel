@@ -18,6 +18,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	private LocalDate dateArrivee, dateDepart;
 	private Ligue ligue;
 	private GestionPersonnel gestionPersonnel;
+	private int id;
 	
 	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, LocalDate dateArrivee, LocalDate dateDepart)
 	{
@@ -163,6 +164,11 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.mail = mail;
 		this.update("mail");
 	}
+	
+	public String getPass() 
+	{
+		return password;
+	}
 
 	/**
 	 * Retourne vrai ssi le password passé en paramètre est bien celui
@@ -242,6 +248,15 @@ public class Employe implements Serializable, Comparable<Employe>
 		return res + ")";
 	}
 	
+	public void setId(int id) 
+	{
+		this.id = id;
+	}
+	public int getId()
+	{
+		return id;
+	}
+	
 	public void update(String column)
 	{
 		try {
@@ -251,6 +266,8 @@ public class Employe implements Serializable, Comparable<Employe>
 			e.printStackTrace();
 		}
 	}
+
+
 }
 
 

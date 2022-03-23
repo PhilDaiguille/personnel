@@ -1,10 +1,10 @@
 package personnel;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.TreeSet;
 import java.util.Collections;
 import java.util.SortedSet;
-import java.util.TreeSet;
+
 
 /**
  * Gestion du personnel. Un seul objet de cette classe existe.
@@ -96,31 +96,92 @@ public class GestionPersonnel implements Serializable
 		return ligue;
 	}
 
-	void remove(Ligue ligue)
+	void remove(Ligue ligue) throws SauvegardeImpossible
 	{
-		ligues.remove(ligue);
+
+		passerelle.deleteLigue(ligue);
 	}
 	
 	int insert(Ligue ligue) throws SauvegardeImpossible
 	{
 		return passerelle.insert(ligue);
 	}
+	int insert(Employe employe) throws SauvegardeImpossible
+	{
+		return passerelle.insert(employe);
+	}
+	
+	
+
 
 	/**
 	 * Retourne le root (super-utilisateur).
 	 * @return le root.
 	 */
 	
-	public Employe getRoot()
-	{
-		return root;
-	}
+	
+	
+	
+	
+	
 	void update(Ligue ligue) throws SauvegardeImpossible
 	{
 		passerelle.updateLigue(ligue);
 	}
+	
 	void update(Employe employe, String column) throws SauvegardeImpossible
 	{
 		passerelle.updateEmploye(employe, column);
+	}
+	
+	public Employe getRoot()
+	{
+		return root;
+	}
+
+	void delete(Employe employe) throws SauvegardeImpossible 
+	{
+
+			passerelle.deleteEmploye(employe);
+	
+	}
+	
+	
+	void delete(Ligue ligue)
+	{
+		try {
+			passerelle.deleteLigue(ligue);
+		} catch (SauvegardeImpossible e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	void changerAdmin(Employe employe)
+	{
+		try
+		{
+			passerelle.newAdmin(employe);
+		}
+		catch(SauvegardeImpossible e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	
+	void removeAdmin(Ligue ligue)
+	{
+		try {
+			passerelle.removeAdmin(ligue);
+		} catch (SauvegardeImpossible e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void rootBdd() throws SauvegardeImpossible
+	{
+		root.setId(1);
+		root = passerelle.bddRoot(root);
 	}
 }

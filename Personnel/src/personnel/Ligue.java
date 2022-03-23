@@ -61,8 +61,11 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	public void setNom(String nom)
 	{
 		this.nom = nom;
+        this.update("nom");
+
 	}
 
+	
 	/**
 	 * Retourne l'administrateur de la ligue.
 	 * @return l'administrateur de la ligue.
@@ -107,15 +110,35 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	 * @param prenom le prénom de l'employé.
 	 * @param mail l'adresse mail de l'employé.
 	 * @param password le password de l'employé.
+	 * @param id 
+	 * @param id2 
 	 * @param date la date d'arrivée
 	 * @return l'employé créé. 
 	 */
 
-	public Employe addEmploye(String nom, String prenom, String mail, String password, LocalDate dateArrivee, LocalDate dateDepart)
+	public Employe addEmploye(String nom, String prenom, String mail, String password, LocalDate dateArrive, LocalDate dateDepart)
 	{
-		Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password, dateArrivee, dateDepart);
+		Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password, dateArrive, dateDepart);
+		employes.add(employe);
+		try {
+			employe.setId(gestionPersonnel.insert(employe));
+		} catch (SauvegardeImpossible e) {
+			e.printStackTrace();
+		}
+		return employe;
+	}
+	public Employe addEmploye(String nom, String prenom, String mail, String password, LocalDate dateArrive, LocalDate dateDepart, int id)
+	{
+		Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password, dateArrive, dateDepart);
+		employe.setId(id);
 		employes.add(employe);
 		return employe;
+	}
+	
+	
+	public int getId()
+	{
+		return id;
 	}
 	
 	void remove(Employe employe)
@@ -128,10 +151,29 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	 * de la ligue.
 	 */
 	
-	public void remove()
+	public void remove() throws SauvegardeImpossible
 	{
 		gestionPersonnel.remove(this);
 	}
+	
+	public void removeAdmin()
+	{
+		gestionPersonnel.removeAdmin(this);
+		administrateur = gestionPersonnel.getRoot();
+	}
+	
+	public void update(String nom)
+	{
+		try {
+			gestionPersonnel.update(this);
+		} catch (SauvegardeImpossible e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+
+
 	
 
 	@Override
@@ -145,6 +187,16 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	{
 		return nom;
 	}
+	
+	public void changeAdmin(Employe employe) 
+	{
+		this.administrateur = employe;
+		gestionPersonnel.changerAdmin(employe);
+	}
+	
+	
+
+
 	
 
 }
