@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import commandLineMenus.List;
 import commandLineMenus.Menu;
 import commandLineMenus.Option;
+import personnel.Ligue;
+import personnel.Employe;
 import personnel.*;
 
 public class LigueConsole 
@@ -154,12 +156,7 @@ public class LigueConsole
 	{
 		return new Option("Supprimer la ligue", "d", () -> {
 			
-			try {
-				ligue.remove();
-			} catch (SauvegardeImpossible e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			ligue.remove();
 			
 		});
 	}

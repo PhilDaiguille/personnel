@@ -37,11 +37,7 @@ public class GestionPersonnel implements Serializable
 	{
 		if (gestionPersonnel == null)
 		{
-			try {
-				gestionPersonnel = passerelle.getGestionPersonnel();
-			} catch (SauvegardeImpossible e) {
-				e.printStackTrace();
-			}
+			gestionPersonnel = passerelle.getGestionPersonnel();
 			if (gestionPersonnel == null)
 				gestionPersonnel = new GestionPersonnel();
 		}
@@ -100,9 +96,9 @@ public class GestionPersonnel implements Serializable
 		return ligue;
 	}
 
-	void remove(Ligue ligue) throws SauvegardeImpossible
+	void remove(Ligue ligue)
 	{
-		passerelle.deleteLigue(ligue);
+		ligues.remove(ligue);
 	}
 	
 	int insert(Ligue ligue) throws SauvegardeImpossible
@@ -123,11 +119,6 @@ public class GestionPersonnel implements Serializable
 	{
 		passerelle.updateLigue(ligue);
 	}
-	int insert(Employe employe) throws SauvegardeImpossible
-	{
-		return passerelle.insert(employe);
-	}
-
 	void update(Employe employe, String column) throws SauvegardeImpossible
 	{
 		passerelle.updateEmploye(employe, column);

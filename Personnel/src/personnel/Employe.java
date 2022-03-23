@@ -251,14 +251,6 @@ public class Employe implements Serializable, Comparable<Employe>
 			e.printStackTrace();
 		}
 	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public int getHabilitation() {
-		return 0;
-	}
 }
 
 
