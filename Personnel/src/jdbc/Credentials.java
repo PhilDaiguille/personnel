@@ -1,7 +1,6 @@
 package jdbc;
 
-public class Credentials
-{
+public class Credentials {
 	private static String driver = "mysql";
 	private static String driverClassName = "com.mysql.cj.jdbc.Driver";
 	private static String host = "localhost";
@@ -9,24 +8,20 @@ public class Credentials
 	private static String database = "ligues";
 	private static String user = "root";
 	private static String password = "";
-	
-	static String getUrl() 
-	{
-		return "jdbc:" + driver + "://" + host + ":" + port + "/" + database ;
+
+	static String getUrl() {
+		return "jdbc:" + driver + "://" + host + ":" + port + "/" + database;
 	}
-	
-	static String getDriverClassName()
-	{
+
+	static String getDriverClassName() {
 		return driverClassName;
 	}
-	
-	static String getUser() 
-	{
+
+	static String getUser() {
 		return user;
 	}
 
-	static String getPassword() 
-	{
+	static String getPassword() {
 		return password;
 	}
 }
