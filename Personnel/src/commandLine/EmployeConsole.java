@@ -68,7 +68,14 @@ public class EmployeConsole {
 
 		});
 	}
+	
+	private Option supprimerEmploye(final Employe employe) {
+		return new Option("Supprimer l'employé", "r", () -> {
+			employe.remove();
+		});
 
+	}
+	
 	private Option setAdmin(final Employe employe) {
 		Ligue ligue = employe.getLigue();
 		return new Option("Mettre administrateur de la ligue", "s", () -> {
@@ -77,12 +84,7 @@ public class EmployeConsole {
 		});
 	}
 
-	private Option supprimerEmploye(final Employe employe) {
-		return new Option("Supprimer l'employé", "r", () -> {
-			employe.remove();
-		});
 
-	}
 
 	private Option changerDateArrivee(final Employe employe) {
 		return new Option("Changer la date d'arrivée", "a", () -> {
