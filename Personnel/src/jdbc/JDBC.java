@@ -40,7 +40,7 @@ public class JDBC implements Passerelle {
 				PreparedStatement req = connection.prepareStatement("SELECT * FROM employe WHERE id_ligue = ?");
 				req.setInt(1, ligues.getInt("id_ligue"));
 				ResultSet employe = req.executeQuery();
-				Ligue ligue = gestionPersonnel.getLigues().last();
+				Ligue ligue = gestionPersonnel.getLigues().first();
 
 				while (employe.next()) {
 					int id = employe.getInt("id_employee");
@@ -79,12 +79,6 @@ public class JDBC implements Passerelle {
 		}
 	}
 
-	
-	
-	
-	// LIGUE
-	
-	
 	/**
 	 * Methode responsable pour insérer une ligue dans la base de donnée lors de sa
 	 * création
@@ -92,7 +86,6 @@ public class JDBC implements Passerelle {
 	 * @param Ligue
 	 * @return id de la ligue
 	 */
-	
 	@Override
 	public int insert(Ligue ligue) throws SauvegardeImpossible {
 		try {
@@ -111,46 +104,24 @@ public class JDBC implements Passerelle {
 			throw new SauvegardeImpossible(exception);
 		}
 	}
-	
-	/**
-	 * Update a ligue
-	 * 
-	 * @param ligue ligue to update
-	 * @throws Exception If an error occurs
-	 */
-	
-	@Override
-	public void updateLigue(Ligue ligue) throws SauvegardeImpossible {
-		try {
-			PreparedStatement instruction;
-			instruction = connection.prepareStatement("UPDATE ligue SET nom_ligue = ? WHERE id_ligue = ?");
-			instruction.setString(1, ligue.getNom());
-			instruction.setInt(2, ligue.getId());
-			instruction.executeUpdate();
-			System.out.print("Update ligue réussi");
-		} catch (SQLException exception) {
-			exception.printStackTrace();
-			throw new SauvegardeImpossible(exception);
-		}
-	}
-	
-	@Override
-	public void deleteLigue(Ligue ligue) throws SauvegardeImpossible {
-		try {
-			PreparedStatement instruction;
-			instruction = connection.prepareStatement("DELETE FROM ligue WHERE id_ligue = ?");
-			instruction.setInt(1, ligue.getId());
-			instruction.executeUpdate();
-			System.out.print("Delete ligue réussi");
-		} catch (SQLException exception) {
-			exception.printStackTrace();
-			throw new SauvegardeImpossible(exception);
-		}
 
+	public void insertRoot(Employe employe) throws SauvegardeImpossible {
+		try {
+			PreparedStatement instruction;
+			instruction = connection.prepareStatement("INSERT INTO employe (nom, prenom, mail, password, habilitation) VALUES (?,?,?,?,?)");
+			instruction.setString(1, employe.getNom());
+			instruction.setString(2, employe.getPrenom());
+			instruction.setString(3, employe.getMail());
+			instruction.setString(4, employe.getPassword());
+			instruction.setInt(5, 1);
+			instruction.executeUpdate();
+			System.out.print("L'insert du root réussi");
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
+		}
 	}
-	
-	// EMPLOYE
-	
+
 	@Override
 	public int insert(Employe employe) throws SauvegardeImpossible {
 		try {
@@ -174,7 +145,58 @@ public class JDBC implements Passerelle {
 			throw new SauvegardeImpossible(exception);
 		}
 	}
-	
+
+	/**
+	 * Update a ligue
+	 * 
+	 * @param ligue ligue to update
+	 * @throws Exception If an error occurs
+	 */
+
+	@Override
+	public void updateLigue(Ligue ligue) throws SauvegardeImpossible {
+		try {
+			PreparedStatement instruction;
+			instruction = connection.prepareStatement("UPDATE ligue SET nom_ligue = ? WHERE id_ligue = ?");
+			instruction.setString(1, ligue.getNom());
+			instruction.setInt(2, ligue.getId());
+			instruction.executeUpdate();
+			System.out.print("Update ligue réussi");
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
+		}
+	}
+
+	@Override
+	public void deleteEmploye(Employe employe) throws SauvegardeImpossible {
+		try {
+			PreparedStatement instruction;
+			instruction = connection.prepareStatement("DELETE FROM employe WHERE id_employee = ?");
+			instruction.setInt(1, employe.getId());
+			instruction.executeUpdate();
+			System.out.print("Delete employé réussi");
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
+		}
+	}
+
+	@Override
+	public void deleteLigue(Ligue ligue) throws SauvegardeImpossible {
+		try {
+			PreparedStatement instruction;
+			instruction = connection.prepareStatement("DELETE FROM ligue WHERE id_ligue = ?");
+			instruction.setInt(1, ligue.getId());
+			instruction.executeUpdate();
+			System.out.print("Delete ligue réussi");
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
+		}
+
+	}
+
 	@Override
 	public void updateEmploye(Employe employe, String column) throws SauvegardeImpossible {
 		try {
@@ -213,23 +235,22 @@ public class JDBC implements Passerelle {
 			throw new SauvegardeImpossible(exception);
 		}
 	}
+
+	// ADMIN 
 	
 	@Override
-	public void deleteEmploye(Employe employe) throws SauvegardeImpossible {
+	public void removeAdmin(Ligue ligue) throws SauvegardeImpossible {
 		try {
 			PreparedStatement instruction;
-			instruction = connection.prepareStatement("DELETE FROM employe WHERE id_employee = ?");
-			instruction.setInt(1, employe.getId());
+			instruction = connection.prepareStatement("UPDATE employe SET habilitation = 0 WHERE id_ligue = ?");
+			instruction.setInt(1, ligue.getId());
 			instruction.executeUpdate();
-			System.out.print("Delete employé réussi");
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 			throw new SauvegardeImpossible(exception);
 		}
 	}
-	
-	// ROOT / ADMIN
-	
+
 	@Override
 	public void nouveauAdmin(Employe employe) throws SauvegardeImpossible {
 		try {
@@ -244,40 +265,22 @@ public class JDBC implements Passerelle {
 			throw new SauvegardeImpossible(exception);
 		}
 	}
-	
+
 	@Override
-	public void removeAdmin(Ligue ligue) throws SauvegardeImpossible {
-		try {
-			PreparedStatement instruction;
-			instruction = connection.prepareStatement("UPDATE employe SET habilitation = 0 WHERE id_ligue = ?");
-			instruction.setInt(1, ligue.getId());
-			instruction.executeUpdate();
-		} catch (SQLException exception) {
-			exception.printStackTrace();
-			throw new SauvegardeImpossible(exception);
-		}
-	}
-	
-	@Override
-	public Employe RootBDD(Employe root) throws SauvegardeImpossible {
+	public Employe Root(Employe root) throws SauvegardeImpossible {
 		try {
 			Statement intruction = connection.createStatement();
 			String requete = "SELECT * FROM employe WHERE habilitation = 1";
-			ResultSet result = intruction.executeQuery(requete);
+			ResultSet employeRoot = intruction.executeQuery(requete);
 
-			if (!result.next()) {
+			if (!employeRoot.next()) {
 				insertRoot(root);
 			}
-
 			else {
-				String nom = (
-						result.getString("nom") != null) ? result.getString("nom") : "";
-				String prenom = (
-						result.getString("prenom") != null) ? result.getString("prenom") : "";
-				String mail = (
-						result.getString("mail") != null) ? result.getString("mail") : "";
-				String password = (
-						result.getString("password") != null) ? result.getString("password") : "";
+				String nom =  employeRoot.getString("nom") != null ? employeRoot.getString("nom") : "";
+				String prenom =  employeRoot.getString("prenom") != null ? employeRoot.getString("prenom") : "";
+				String mail = employeRoot.getString("mail") != null ? employeRoot.getString("mail") : "";
+				String password = employeRoot.getString("password") != null ? employeRoot.getString("password") : "";
 				root.setNom(nom);
 				root.setPrenom(prenom);
 				root.setMail(mail);
@@ -289,25 +292,6 @@ public class JDBC implements Passerelle {
 			throw new SauvegardeImpossible(exception);
 		}
 	}
-	
-
-	public void insertRoot(Employe employe) throws SauvegardeImpossible {
-		try {
-			PreparedStatement instruction;
-			instruction = connection.prepareStatement("INSERT INTO employe (nom, prenom, mail, password, habilitation) VALUES (?,?,?,?,?)");
-			instruction.setString(1, employe.getNom());
-			instruction.setString(2, employe.getPrenom());
-			instruction.setString(3, employe.getMail());
-			instruction.setString(4, employe.getPassword());
-			instruction.setInt(5, 1);
-			instruction.executeUpdate();
-			System.out.print("L'insert du root réussi");
-		} catch (SQLException exception) {
-			exception.printStackTrace();
-			throw new SauvegardeImpossible(exception);
-		}
-	}
-
 
 	
 }

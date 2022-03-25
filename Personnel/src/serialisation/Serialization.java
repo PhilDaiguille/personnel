@@ -56,7 +56,7 @@ public class Serialization implements personnel.Passerelle {
 	}
 
 	@Override
-	public Employe RootBDD(Employe root) throws SauvegardeImpossible {
+	public Employe Root(Employe root) throws SauvegardeImpossible {
 		// TODO Auto-generated method stub
 		return root;
 
