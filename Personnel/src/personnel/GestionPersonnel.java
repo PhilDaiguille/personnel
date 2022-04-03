@@ -29,9 +29,10 @@ public class GestionPersonnel implements Serializable {
 	 * déjà.
 	 * 
 	 * @return l'unique objet de type {@link GestionPersonnel}.
+	 * @throws SauvegardeImpossible 
 	 */
 
-	public static GestionPersonnel getGestionPersonnel() {
+	public static GestionPersonnel getGestionPersonnel() throws SauvegardeImpossible {
 		if (gestionPersonnel == null) {
 			gestionPersonnel = passerelle.getGestionPersonnel();
 			if (gestionPersonnel == null)
@@ -90,7 +91,7 @@ public class GestionPersonnel implements Serializable {
 
 	void remove(Ligue ligue) throws SauvegardeImpossible {
 
-			passerelle.deleteLigue(ligue);
+			passerelle.delete(ligue);
 
 	}
 
@@ -99,7 +100,7 @@ public class GestionPersonnel implements Serializable {
 	}
 
 	void update(Ligue ligue) throws SauvegardeImpossible {
-		passerelle.updateLigue(ligue);
+		passerelle.update(ligue);
 	}
 
 	// EMPLOYE
@@ -109,21 +110,16 @@ public class GestionPersonnel implements Serializable {
 	}
 
 	void update(Employe employe, String column) throws SauvegardeImpossible {
-		passerelle.updateEmploye(employe, column);
+		passerelle.update(employe, column);
 	}
 
 
 	void delete(Employe employe) throws SauvegardeImpossible {
 
-		passerelle.deleteEmploye(employe);
+		passerelle.delete(employe);
 
 	}
 	
-	void removeAdmin(Ligue ligue) throws SauvegardeImpossible {
-
-			passerelle.removeAdmin(ligue);
-
-	}
 
 	/**
 	 * Retourne le root (super-utilisateur).
@@ -135,18 +131,5 @@ public class GestionPersonnel implements Serializable {
 		return root;
 	}
 
-	void changerAdmin(Employe employe) {
 
-			try {
-				passerelle.nouveauAdmin(employe);
-			} catch (SauvegardeImpossible e) {
-				e.printStackTrace();
-			}
-
-	}
-
-	public void RootBDD() throws SauvegardeImpossible {
-		root.setId(1);
-		root = passerelle.Root(root);
-	}
 }
