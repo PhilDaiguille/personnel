@@ -27,7 +27,7 @@ public class JDBC implements Passerelle {
 	}
 
 	@Override
-	public GestionPersonnel getGestionPersonnel() {
+	public GestionPersonnel getGestionPersonnel() throws SauvegardeImpossible {
 		GestionPersonnel gestionPersonnel = new GestionPersonnel();
 
 		try {
@@ -53,13 +53,14 @@ public class JDBC implements Passerelle {
 
 					Employe employee = ligue.addEmploye(nom, prenom, mail, password, date_arrivee, date_depart, id);
 
-					if (employe.getBoolean("habilitation")) {
+					if (employe.getInt("habilitation") == 1) {
 						ligue.setAdministrateur(employee);
 					}
 				}
 			}
-		} catch (SQLException e) {
-			System.out.println(e);
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
 		}
 
 		return gestionPersonnel;
@@ -96,7 +97,7 @@ public class JDBC implements Passerelle {
 			instruction.executeUpdate();
 			ResultSet id = instruction.getGeneratedKeys();
 			id.next();
-			System.out.print("Insert ligue réussi");
+			
 			return id.getInt(1);
 
 		} catch (SQLException exception) {
@@ -105,22 +106,7 @@ public class JDBC implements Passerelle {
 		}
 	}
 
-	public void insertRoot(Employe employe) throws SauvegardeImpossible {
-		try {
-			PreparedStatement instruction;
-			instruction = connection.prepareStatement("INSERT INTO employe (nom, prenom, mail, password, habilitation) VALUES (?,?,?,?,?)");
-			instruction.setString(1, employe.getNom());
-			instruction.setString(2, employe.getPrenom());
-			instruction.setString(3, employe.getMail());
-			instruction.setString(4, employe.getPassword());
-			instruction.setInt(5, 1);
-			instruction.executeUpdate();
-			System.out.print("L'insert du root réussi");
-		} catch (SQLException exception) {
-			exception.printStackTrace();
-			throw new SauvegardeImpossible(exception);
-		}
-	}
+	
 
 	@Override
 	public int insert(Employe employe) throws SauvegardeImpossible {
@@ -133,12 +119,12 @@ public class JDBC implements Passerelle {
 			instruction.setString(4, employe.getPassword());
 			instruction.setDate(5, employe.getdateArrivee() == null ? null : Date.valueOf(employe.getdateArrivee()));
 			instruction.setDate(6, employe.getdateDepart() == null ? null : Date.valueOf(employe.getdateDepart()));
-			instruction.setInt(7, employe.getAdministrateur());
+			instruction.setBoolean(7, employe.estAdmin());
 			instruction.setInt(8, employe.getLigue().getId());
 			instruction.executeUpdate();
 			ResultSet id = instruction.getGeneratedKeys();
 			id.next();
-			System.out.print("insert employé réussi");
+			
 			return id.getInt(1);
 		} catch (SQLException exception) {
 			exception.printStackTrace();
@@ -154,14 +140,14 @@ public class JDBC implements Passerelle {
 	 */
 
 	@Override
-	public void updateLigue(Ligue ligue) throws SauvegardeImpossible {
+	public void update(Ligue ligue) throws SauvegardeImpossible {
 		try {
 			PreparedStatement instruction;
 			instruction = connection.prepareStatement("UPDATE ligue SET nom_ligue = ? WHERE id_ligue = ?");
 			instruction.setString(1, ligue.getNom());
 			instruction.setInt(2, ligue.getId());
 			instruction.executeUpdate();
-			System.out.print("Update ligue réussi");
+			
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 			throw new SauvegardeImpossible(exception);
@@ -169,13 +155,13 @@ public class JDBC implements Passerelle {
 	}
 
 	@Override
-	public void deleteEmploye(Employe employe) throws SauvegardeImpossible {
+	public void delete(Employe employe) throws SauvegardeImpossible {
 		try {
 			PreparedStatement instruction;
 			instruction = connection.prepareStatement("DELETE FROM employe WHERE id_employee = ?");
 			instruction.setInt(1, employe.getId());
 			instruction.executeUpdate();
-			System.out.print("Delete employé réussi");
+			
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 			throw new SauvegardeImpossible(exception);
@@ -183,115 +169,42 @@ public class JDBC implements Passerelle {
 	}
 
 	@Override
-	public void deleteLigue(Ligue ligue) throws SauvegardeImpossible {
+	public void delete(Ligue ligue) throws SauvegardeImpossible {
 		try {
 			PreparedStatement instruction;
 			instruction = connection.prepareStatement("DELETE FROM ligue WHERE id_ligue = ?");
 			instruction.setInt(1, ligue.getId());
 			instruction.executeUpdate();
-			System.out.print("Delete ligue réussi");
+			
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 			throw new SauvegardeImpossible(exception);
 		}
 
 	}
-
-	@Override
-	public void updateEmploye(Employe employe, String column) throws SauvegardeImpossible {
-		try {
-			PreparedStatement instruction;
-			instruction = connection.prepareStatement("UPDATE employe SET " + column + "= ? WHERE id_employee = ?");
-			switch(column) {
-			  case "nom":
-				  instruction.setString(1, employe.getNom());
-			    break;
-			  case "prenom":
-				  instruction.setString(1, employe.getPrenom());
-			    break;
-			  case "mail":
-				  instruction.setString(1, employe.getMail());
-			    break;
-			  case "password":
-				  instruction.setString(1, employe.getPassword());
-			    break;
-			  case "date_arrivee":
-				  instruction.setDate(1, employe.getdateArrivee() == null ? null : Date.valueOf(employe.getdateArrivee()));
-			    break;
-			  case "date_depart":
-				  instruction.setDate(1, employe.getdateDepart() == null ? null : Date.valueOf(employe.getdateDepart()));
-				break;
-			  case "habilitation":
-				  instruction.setInt(1, employe.getAdministrateur());
-				break;
-			  default:
-				  System.err.print("nul");
-			}
-			instruction.setInt(2, employe.getId());
-			instruction.executeUpdate();
-			System.out.print("Changement de l'employé réussi");
-		} catch (SQLException exception) {
-			exception.printStackTrace();
-			throw new SauvegardeImpossible(exception);
-		}
-	}
-
-	// ADMIN 
 	
 	@Override
-	public void removeAdmin(Ligue ligue) throws SauvegardeImpossible {
+	public void update(Employe employe, String column) throws SauvegardeImpossible {
 		try {
 			PreparedStatement instruction;
-			instruction = connection.prepareStatement("UPDATE employe SET habilitation = 0 WHERE id_ligue = ?");
-			instruction.setInt(1, ligue.getId());
+			instruction = connection.prepareStatement("UPDATE employe SET nom = (?), prenom = (?), mail = (?), password = (?), date_arrivee = (?), date_depart = (?), habilitation = (?) WHERE id_employee = (?)");
+			instruction.setString(1, employe.getNom());
+			instruction.setString(2, employe.getPrenom());		  
+			instruction.setString(3, employe.getMail());		 
+			instruction.setString(4, employe.getPassword());	 
+			instruction.setDate(5, employe.getdateArrivee() == null ? null : Date.valueOf(employe.getdateArrivee()));	 
+			instruction.setDate(6, employe.getdateDepart() == null ? null : Date.valueOf(employe.getdateDepart()));	
+			instruction.setBoolean(7, employe.estAdmin());		
+			instruction.setInt(8, employe.getId());
 			instruction.executeUpdate();
+			
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 			throw new SauvegardeImpossible(exception);
 		}
 	}
 
-	@Override
-	public void nouveauAdmin(Employe employe) throws SauvegardeImpossible {
-		try {
-			PreparedStatement instruction;
-			instruction = connection.prepareStatement("UPDATE employe SET habilitation = (CASE WHEN id_employee = ? THEN 1 WHEN id_employee != ? THEN 0 END) WHERE id_ligue = ?");
-			instruction.setInt(1, employe.getId());
-			instruction.setInt(2, employe.getId());
-			instruction.setInt(3, employe.getLigue().getId());
-			instruction.executeUpdate();
-		} catch (SQLException exception) {
-			exception.printStackTrace();
-			throw new SauvegardeImpossible(exception);
-		}
-	}
-
-	@Override
-	public Employe Root(Employe root) throws SauvegardeImpossible {
-		try {
-			Statement intruction = connection.createStatement();
-			String requete = "SELECT * FROM employe WHERE habilitation = 1";
-			ResultSet employeRoot = intruction.executeQuery(requete);
-
-			if (!employeRoot.next()) {
-				insertRoot(root);
-			}
-			else {
-				String nom =  employeRoot.getString("nom") != null ? employeRoot.getString("nom") : "";
-				String prenom =  employeRoot.getString("prenom") != null ? employeRoot.getString("prenom") : "";
-				String mail = employeRoot.getString("mail") != null ? employeRoot.getString("mail") : "";
-				String password = employeRoot.getString("password") != null ? employeRoot.getString("password") : "";
-				root.setNom(nom);
-				root.setPrenom(prenom);
-				root.setMail(mail);
-				root.setPassword(password);
-			}
-			return root;
-		} catch (SQLException exception) {
-			exception.printStackTrace();
-			throw new SauvegardeImpossible(exception);
-		}
-	}
+	
 
 	
 }

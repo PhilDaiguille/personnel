@@ -81,13 +81,13 @@ public class Ligue implements Serializable, Comparable<Ligue> {
 	 * @param administrateur le nouvel administrateur de la ligue.
 	 */
 
-	public void setAdministrateur(Employe administrateur) {
+	public void setAdministrateur(Employe administrateur) throws SauvegardeImpossible{
 		Employe root = gestionPersonnel.getRoot();
 		if (administrateur != root && administrateur.getLigue() != this) {
 			throw new DroitsInsuffisants();
 		}
 		this.administrateur = administrateur;
-		gestionPersonnel.changerAdmin(administrateur);
+		gestionPersonnel.update(administrateur, "habilitation");
 	}
 	
 
@@ -149,10 +149,7 @@ public class Ligue implements Serializable, Comparable<Ligue> {
 		gestionPersonnel.remove(this);
 	}
 
-	public void removeAdmin() {
-		gestionPersonnel.removeAdmin(this);
-		administrateur = gestionPersonnel.getRoot();
-	}
+	
 	
 
 	public void update(String nom) {

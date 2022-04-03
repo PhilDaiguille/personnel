@@ -222,30 +222,23 @@ public class Employe implements Serializable, Comparable<Employe> {
 
 	// SET ET GET ADMINISTRATEUR
 
-	public void setAdministrateur(int administrateur) {
-		this.administrateur = administrateur;
+	public boolean estAdmin() {
+		return ligue.getAdministrateur() == this;
 	}
-
-	public int getAdministrateur() {
-		return administrateur;
-	}
-
+	
 	/**
 	 * Supprime l'employé. Si celui-ci est un administrateur, le root récupère les
 	 * droits d'administration sur sa ligue.
 	 */
 
-	public void remove() {
+	public void remove() throws SauvegardeImpossible{
 		Employe root = gestionPersonnel.getRoot();
 		if (this != root) {
 			if (estAdmin(getLigue()))
 				getLigue().setAdministrateur(root);
 			getLigue().remove(this);
-			try {
-				gestionPersonnel.delete(this);
-			} catch (SauvegardeImpossible e) {
-				e.printStackTrace();
-			}
+			gestionPersonnel.delete(this);
+
 		} else
 			throw new ImpossibleDeSupprimerRoot();
 	}

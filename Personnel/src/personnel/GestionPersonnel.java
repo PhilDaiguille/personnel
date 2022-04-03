@@ -90,12 +90,8 @@ public class GestionPersonnel implements Serializable {
 
 	void remove(Ligue ligue) throws SauvegardeImpossible {
 
-		try {
 			passerelle.deleteLigue(ligue);
-		} catch (SauvegardeImpossible e) {
 
-			e.printStackTrace();
-		}
 	}
 
 	int insert(Ligue ligue) throws SauvegardeImpossible {
@@ -123,12 +119,10 @@ public class GestionPersonnel implements Serializable {
 
 	}
 	
-	void removeAdmin(Ligue ligue) {
-		try {
+	void removeAdmin(Ligue ligue) throws SauvegardeImpossible {
+
 			passerelle.removeAdmin(ligue);
-		} catch (SauvegardeImpossible e) {
-			e.printStackTrace();
-		}
+
 	}
 
 	/**
@@ -142,11 +136,13 @@ public class GestionPersonnel implements Serializable {
 	}
 
 	void changerAdmin(Employe employe) {
-		try {
-			passerelle.nouveauAdmin(employe);
-		} catch (SauvegardeImpossible e) {
-			e.printStackTrace();
-		}
+
+			try {
+				passerelle.nouveauAdmin(employe);
+			} catch (SauvegardeImpossible e) {
+				e.printStackTrace();
+			}
+
 	}
 
 	public void RootBDD() throws SauvegardeImpossible {

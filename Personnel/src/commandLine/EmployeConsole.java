@@ -11,6 +11,7 @@ import commandLineMenus.Option;
 
 import personnel.Employe;
 import personnel.Ligue;
+import personnel.SauvegardeImpossible;
 import personnel.dateIncorrect;
 
 public class EmployeConsole {
@@ -71,15 +72,23 @@ public class EmployeConsole {
 	
 	private Option supprimerEmploye(final Employe employe) {
 		return new Option("Supprimer l'employé", "r", () -> {
-			employe.remove();
+			try {
+				employe.remove();
+			} catch (SauvegardeImpossible e) {
+				e.printStackTrace();
+			}
 		});
 
 	}
 	
-	private Option setAdmin(final Employe employe) {
+	private Option setAdmin(final Employe employe)  {
 		Ligue ligue = employe.getLigue();
 		return new Option("Mettre administrateur de la ligue", "s", () -> {
-			ligue.setAdministrateur(employe);
+			try {
+				ligue.setAdministrateur(employe);
+			} catch (SauvegardeImpossible e) {
+				e.printStackTrace();
+			}
 
 		});
 	}
