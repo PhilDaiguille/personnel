@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import personnel.*;
 
-class testEmploye
+class testEmploye 
 {
 	GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
 	
@@ -30,25 +30,6 @@ class testEmploye
 		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.parse("2019-11-12"), LocalDate.parse("2020-11-12"));
 		employe.remove();
 		
-	}
-	@Test
-	void isAdmin() throws SauvegardeImpossible
-	{
-		Ligue ligue = gestionPersonnel.addLigue("Football");
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.parse("2019-11-12"), LocalDate.parse("2020-11-12"));
-		assertFalse(employe.estAdmin(ligue));
-		ligue.setAdministrateur(employe);
-		assertTrue(employe.estAdmin(ligue));
-	}
-	
-	@Test
-	void isRoot() throws SauvegardeImpossible
-	{
-		Ligue ligue = gestionPersonnel.addLigue("Football");
-		Employe employe = gestionPersonnel.getRoot();
-		Employe employe1 = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.parse("2019-11-12"), LocalDate.parse("2020-11-12"));
-		assertTrue(employe.estRoot());
-		assertFalse(employe1.estRoot());
 	}
 	
 	@Test

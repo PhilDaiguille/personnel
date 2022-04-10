@@ -32,9 +32,13 @@ public class GestionPersonnel implements Serializable {
 	 * @throws SauvegardeImpossible 
 	 */
 
-	public static GestionPersonnel getGestionPersonnel() throws SauvegardeImpossible {
+	public static GestionPersonnel getGestionPersonnel() {
 		if (gestionPersonnel == null) {
-			gestionPersonnel = passerelle.getGestionPersonnel();
+			try {
+				gestionPersonnel = passerelle.getGestionPersonnel();
+			} catch (SauvegardeImpossible e) {
+				e.printStackTrace();
+			}
 			if (gestionPersonnel == null)
 				gestionPersonnel = new GestionPersonnel();
 		}
