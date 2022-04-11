@@ -19,7 +19,7 @@ public class RunApplication extends Application {
 			primaryStage.setResizable(false);
 			primaryStage.setTitle("PPE - Gestion du personnel des ligues");
 			primaryStage.show();
-			Image image = new Image("C:/Users/Phili/git/personnel/Personnel/src/JavaFX/icon.png");
+			Image image = new Image("D:/User/Documents/GitHub/personnel/Personnel/src/JavaFX/icon.png");
 			primaryStage.getIcons().add(image);
 
 	}
