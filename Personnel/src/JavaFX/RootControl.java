@@ -21,7 +21,7 @@ import personnel.Employe;
 import personnel.GestionPersonnel;
 import personnel.Ligue;
 
-public class LoginControl {
+public class RootControl {
 	
 	@FXML
 	private AnchorPane anchorPane;
@@ -41,22 +41,6 @@ public class LoginControl {
 		return gestionPersonnel;
 	}
 	
-	
-	@FXML
-	private void handlebtn() throws Exception {		
-		
-		if(GestionPersonnel.getGestionPersonnel().getRoot().checkPassword(password.getText())) {
-			Parent root;
-			root = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
-			Stage window = (Stage) button.getScene().getWindow();
-			window.setScene(new Scene(root, 800, 600));
-			window.setTitle("PPE - Gestion du personnel des ligues");
-			window.show();
-		}
-		else {
-			warning.setText("Mot de passe incorrect");
-		}
-	}
 	@FXML
 	private void BackButton() throws Exception {		
 			Parent root;
@@ -66,27 +50,6 @@ public class LoginControl {
 			
 		}
 
-		@FXML
-		private void AccesLigue() throws Exception {		
-			Parent root;
-			root = FXMLLoader.load(getClass().getResource("Ligue.fxml"));
-			Stage window = (Stage) acces.getScene().getWindow();
-			window.setScene(new Scene(root, 800, 600));
-			
-		}
-	
-		@FXML
-		private void AccessRoot() throws Exception {
-		    Stage mainStage = (Stage) acces.getScene().getWindow();
-
-		    try {
-		            Parent root = FXMLLoader.load(getClass().getResource("Root.fxml"));
-		            Scene scene = new Scene(root);
-		            mainStage.setScene(scene);
-		            mainStage.setTitle("Test Window");
-		        }
-		            catch(Exception e){}
-		}
 }
 
 	
