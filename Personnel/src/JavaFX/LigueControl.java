@@ -81,7 +81,7 @@ public class LigueControl implements Initializable{
 			Parent root;
 			root = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
 			Stage window = (Stage) back.getScene().getWindow();
-			window.setScene(new Scene(root, 600, 400));
+			window.setScene(new Scene(root, 800, 600));
 			
 		}
 	

@@ -49,7 +49,7 @@ public class LoginControl {
 			Parent root;
 			root = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
 			Stage window = (Stage) button.getScene().getWindow();
-			window.setScene(new Scene(root, 600, 400));
+			window.setScene(new Scene(root, 800, 600));
 			window.setTitle("PPE - Gestion du personnel des ligues");
 			window.show();
 		}
@@ -62,7 +62,7 @@ public class LoginControl {
 			Parent root;
 			root = FXMLLoader.load(getClass().getResource("Login.fxml"));
 			Stage window = (Stage) back.getScene().getWindow();
-			window.setScene(new Scene(root, 600, 400));
+			window.setScene(new Scene(root, 800, 600));
 			
 		}
 	
@@ -72,7 +72,7 @@ public class LoginControl {
 			Parent root;
 			root = FXMLLoader.load(getClass().getResource("Ligue.fxml"));
 			Stage window = (Stage) acces.getScene().getWindow();
-			window.setScene(new Scene(root, 600, 400));
+			window.setScene(new Scene(root, 800, 600));
 			
 		}
 }
