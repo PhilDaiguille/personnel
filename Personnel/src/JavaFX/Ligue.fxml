@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.LigueControl">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.LigueControl">
    <children>
       <Label layoutX="68.0" layoutY="53.0" prefHeight="47.0" prefWidth="272.0" stylesheets="@application.css" text="Selectionner la ligue :" textFill="WHITE">
          <font>
@@ -25,7 +25,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="263.0" layoutY="326.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="52.0" style="-fx-background-color: #3498db;" stylesheets="@application.css" text="+">
+      <Button fx:id="insert" layoutX="263.0" layoutY="326.0" mnemonicParsing="false" onAction="#AddLigue" prefHeight="47.0" prefWidth="52.0" style="-fx-background-color: #3498db;" stylesheets="@application.css" text="+">
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Button>
@@ -33,6 +33,6 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <TextField alignment="CENTER" layoutX="63.0" layoutY="326.0" prefHeight="47.0" prefWidth="192.0" promptText="Insérer le nom de la ligue" />
+      <TextField fx:id="InsertLigue" alignment="CENTER" layoutX="63.0" layoutY="326.0" onAction="#AddLigue" prefHeight="47.0" prefWidth="192.0" promptText="Insérer le nom de la ligue" />
    </children>
 </AnchorPane>

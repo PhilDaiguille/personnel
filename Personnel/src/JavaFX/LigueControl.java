@@ -1,5 +1,7 @@
 package JavaFX;
 
+import static commandLineMenus.rendering.examples.util.InOut.getString;
+
 import java.util.ResourceBundle;
 import java.util.SortedSet;
 
@@ -16,11 +18,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.MeshView;
 import javafx.stage.Stage;
 import personnel.GestionPersonnel;
 import personnel.Ligue;
+import personnel.SauvegardeImpossible;
 
 public class LigueControl implements Initializable{
 	
@@ -32,9 +36,12 @@ public class LigueControl implements Initializable{
 	@FXML
 	private ListView<Ligue> myListView;
 	@FXML
-	private Button back;
+	private Button back, insert;
 	@FXML
 	private Label myLabel;
+	
+	@FXML
+	private TextField InsertLigue;
 	
 	String liguec;
 	
@@ -57,6 +64,18 @@ public class LigueControl implements Initializable{
 			
 		});
 	}
+	
+	@FXML
+	private void AddLigue() throws Exception {		
+			
+		String ligue = InsertLigue.getText().toString();
+		Stage window = (Stage) insert.getScene().getWindow();
+		
+		gestionPersonnel.addLigue(ligue);
+		System.out.print("ça marche j'imagine");
+			
+	}
+	
 	@FXML
 	private void BackButton() throws Exception {		
 			Parent root;
@@ -65,7 +84,7 @@ public class LigueControl implements Initializable{
 			window.setScene(new Scene(root, 600, 400));
 			
 		}
-
+	
 	
 	
 }
