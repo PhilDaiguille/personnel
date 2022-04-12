@@ -15,7 +15,7 @@ public class RunApplication extends Application {
 		
 			Parent root;
 			root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-			primaryStage.setScene(new Scene(root, 600, 400));
+			primaryStage.setScene(new Scene(root, 800, 600));
 			primaryStage.setResizable(false);
 			primaryStage.setTitle("PPE - Gestion du personnel des ligues");
 			primaryStage.show();
