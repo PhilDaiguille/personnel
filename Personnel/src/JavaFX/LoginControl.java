@@ -82,6 +82,15 @@ public class LoginControl {
 			Stage window = (Stage) acces.getScene().getWindow();
 			window.setScene(new Scene(root, 800, 600));
 		}
+		
+		@FXML
+	    private void ToucheEntrer(KeyEvent event) throws Exception
+	    {
+	        if (event.getCode() == KeyCode.ENTER) {
+	        	handlebtn();
+	        }
+	        	
+	    }
 }
 
 	
