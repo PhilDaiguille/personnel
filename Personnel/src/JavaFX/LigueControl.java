@@ -36,7 +36,7 @@ public class LigueControl implements Initializable{
 	@FXML
 	private ListView<Ligue> myListView;
 	@FXML
-	private Button back, insert;
+	private Button back, insert, acces, delete;
 	@FXML
 	private Label myLabel;
 	
@@ -46,12 +46,12 @@ public class LigueControl implements Initializable{
 	String liguec;
 	
 	@Override
-	public void initialize(java.net.URL arg0, ResourceBundle arg1) {
+	public void initialize(java.net.URL url, ResourceBundle ressource) {
 		
 		myListView.getItems().addAll(ligues);
 		myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Ligue>() {
 			@Override
-			public void changed(ObservableValue<? extends Ligue> arg0, Ligue arg1, Ligue arg2) {
+			public void changed(ObservableValue<? extends Ligue> url, Ligue ressource, Ligue ressource2) {
 				
 				myListView.getSelectionModel().getSelectedItem();
 				liguec = myListView.getSelectionModel().getSelectedItem().toString();
@@ -70,9 +70,25 @@ public class LigueControl implements Initializable{
 			
 		String ligue = InsertLigue.getText().toString();
 		Stage window = (Stage) insert.getScene().getWindow();
-		
 		gestionPersonnel.addLigue(ligue);
-		System.out.print("ça marche j'imagine");
+			
+	}
+	@FXML
+	private void AccesEmploye() throws Exception {		
+		Parent root;
+		root = FXMLLoader.load(getClass().getResource("Employe.fxml"));
+		Stage window = (Stage) acces.getScene().getWindow();
+		window.setScene(new Scene(root, 800, 600));
+			
+	}
+	@FXML
+	private void DeleteLigue() throws Exception {	
+		
+		myListView.getSelectionModel().getSelectedItem();
+		Ligue ligue = myListView.getSelectionModel().getSelectedItem();
+		Stage window = (Stage) delete.getScene().getWindow();
+		ligue.remove();
+		System.out.print("ouais j'suis là");
 			
 	}
 	
@@ -83,7 +99,7 @@ public class LigueControl implements Initializable{
 			Stage window = (Stage) back.getScene().getWindow();
 			window.setScene(new Scene(root, 800, 600));
 			
-		}
+	}
 	
 	
 	

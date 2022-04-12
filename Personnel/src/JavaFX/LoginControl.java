@@ -36,7 +36,6 @@ public class LoginControl {
 	private Employe root = gestionPersonnel.getRoot();
 	
 	
-	
 	public GestionPersonnel getGestion() {
 		return gestionPersonnel;
 	}

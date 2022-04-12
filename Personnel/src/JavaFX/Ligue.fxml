@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.LigueControl">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.LigueControl">
    <children>
       <Label layoutX="119.0" layoutY="72.0" prefHeight="47.0" prefWidth="272.0" stylesheets="@application.css" text="Selectionner la ligue :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <ListView fx:id="myListView" layoutX="118.0" layoutY="127.0" prefHeight="347.0" prefWidth="565.0" style="-fx-border-color: #000; -fx-background-color: #fafafa; -fx-border-width: 5px;" stylesheets="@application.css" />
+      <ListView fx:id="myListView" layoutX="88.0" layoutY="127.0" prefHeight="347.0" prefWidth="618.0" style="-fx-border-color: #000; -fx-background-color: #fafafa; -fx-border-width: 5px;" stylesheets="@application.css" />
       <Label fx:id="myLabel" layoutX="401.0" layoutY="77.0" prefHeight="38.0" prefWidth="283.0" stylesheets="@application.css" textFill="WHITE">
          <font>
             <Font name="System Bold" size="26.0" />
@@ -25,14 +25,19 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="insert" layoutX="370.0" layoutY="488.0" mnemonicParsing="false" onAction="#AddLigue" prefHeight="58.0" prefWidth="61.0" style="-fx-background-color: #3498db;" stylesheets="@application.css" text="+">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font></Button>
-      <Button layoutX="491.0" layoutY="488.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="192.0" style="-fx-background-color: #fff;" text="Gérer">
+      <Button fx:id="acces" layoutX="475.0" layoutY="488.0" mnemonicParsing="false" onAction="#AccesEmploye" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #fff;" text="Gérer la ligue">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <TextField fx:id="InsertLigue" alignment="CENTER" layoutX="119.0" layoutY="488.0" onAction="#AddLigue" prefHeight="58.0" prefWidth="221.0" promptText="Insérer le nom de la ligue" />
+      <Button fx:id="insert" layoutX="323.0" layoutY="488.0" mnemonicParsing="false" onAction="#AddLigue" prefHeight="58.0" prefWidth="61.0" style="-fx-background-color: #3498db;" stylesheets="@application.css" text="+">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font></Button>
+      <TextField fx:id="InsertLigue" alignment="CENTER" layoutX="88.0" layoutY="488.0" onAction="#AddLigue" prefHeight="58.0" prefWidth="221.0" promptText="Insérer le nom de la ligue" />
+      <Button fx:id="delete" layoutX="401.0" layoutY="488.0" mnemonicParsing="false" onAction="#DeleteLigue" prefHeight="58.0" prefWidth="62.0" style="-fx-background-color: #e74c3c;" stylesheets="@application.css" text="X">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
