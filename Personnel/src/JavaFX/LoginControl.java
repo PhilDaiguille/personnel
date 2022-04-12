@@ -77,15 +77,10 @@ public class LoginControl {
 	
 		@FXML
 		private void AccessRoot() throws Exception {
-		    Stage mainStage = (Stage) acces.getScene().getWindow();
-
-		    try {
-		            Parent root = FXMLLoader.load(getClass().getResource("Root.fxml"));
-		            Scene scene = new Scene(root);
-		            mainStage.setScene(scene);
-		            mainStage.setTitle("Test Window");
-		        }
-		            catch(Exception e){}
+			Parent root;
+			root = FXMLLoader.load(getClass().getResource("Root.fxml"));
+			Stage window = (Stage) acces.getScene().getWindow();
+			window.setScene(new Scene(root, 800, 600));
 		}
 }
 
