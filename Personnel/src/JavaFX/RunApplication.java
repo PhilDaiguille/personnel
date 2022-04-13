@@ -14,12 +14,12 @@ public class RunApplication extends Application {
 	public void start(Stage primaryStage) throws IOException {
 
 		Parent root;
-		root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+		root = FXMLLoader.load(getClass().getResource("Graphique/Login.fxml"));
 		primaryStage.setScene(new Scene(root, 800, 600));
 		primaryStage.setResizable(false);
 		primaryStage.setTitle("PPE - Gestion du personnel des ligues");
 		primaryStage.show();
-		Image image = new Image(getClass().getResource("icon.png").toExternalForm());
+		Image image = new Image(getClass().getResource("Image/icon.png").toExternalForm());
 		primaryStage.getIcons().add(image);
 
 	}

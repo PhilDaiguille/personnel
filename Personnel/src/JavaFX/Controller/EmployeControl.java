@@ -1,18 +1,10 @@
-package JavaFX;
+package JavaFX.Controller;
 
 import static commandLineMenus.rendering.examples.util.InOut.getString;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.ResourceBundle;
 import java.util.SortedSet;
 
-import javafx.beans.property.SimpleSetProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,12 +15,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+
 import personnel.Employe;
 import personnel.Ligue;
 
@@ -36,31 +30,22 @@ public class EmployeControl implements Initializable {
 
 	private ObservableList<Employe> observableEmploye;
 	private Ligue ligue;
-	private static SortedSet<Employe> employe;
+	private static SortedSet<Employe> employes;
 
 	@FXML
-	private TableColumn<Employe, LocalDate> DateArrivee;
+	private TableColumn<Employe, String> DateArrivee;
 
 	@FXML
-	private TableColumn<Employe, LocalDate> DateDepart;
+	private TableColumn<Employe, String> DateDepart;
 
 	@FXML
-	private TableColumn<Employe, String> Habilitation;
-
-	@FXML
-	private TableColumn<Employe, String> Mail;
-
-	@FXML
-	private TableColumn<Employe, String> Nom;
-
-	@FXML
-	private TableColumn<Employe, String> Prenom;
+	private TableColumn<Employe, String> Nom, Prenom, Mail, Habilitation;
 
 	@FXML
 	private Label nomLigue;
 
 	@FXML
-	private Button back, accesAdd;
+	private Button back, AccesAdd, AccesModif;
 
 	@FXML
 	private TableView<Employe> tableEmploye;
@@ -68,44 +53,54 @@ public class EmployeControl implements Initializable {
 	@FXML
 	private void BackButton() throws Exception {
 		Parent root;
-		root = FXMLLoader.load(getClass().getResource("Ligue.fxml"));
+		root = FXMLLoader.load(getClass().getResource("../Graphique/Ligue.fxml"));
 		Stage window = (Stage) back.getScene().getWindow();
 		window.setScene(new Scene(root, 800, 600));
 
 	}
+
 	@FXML
-    private void ToucheRetour(KeyEvent event) throws Exception
-    {
-        if (event.getCode() == KeyCode.ESCAPE) {
-        	BackButton();
-        }
-        	
-    }
+	private void ToucheRetour(KeyEvent event) throws Exception {
+		if (event.getCode() == KeyCode.ESCAPE) {
+			BackButton();
+		}
+
+	}
 
 	@Override
 	public void initialize(java.net.URL url, ResourceBundle ressource) {
 
 		ligue = LigueControl.getLigue();
-		employe = ligue.getEmployes();
+		employes = ligue.getEmployes();
 
-		observableEmploye = FXCollections.observableArrayList(employe);
-		
+		observableEmploye = FXCollections.observableArrayList(employes);
+
 		tableEmploye.setItems(observableEmploye);
 		Nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
 		Prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
 		Mail.setCellValueFactory(new PropertyValueFactory<>("mail"));
-		DateArrivee.setCellValueFactory(new PropertyValueFactory<>("dateArrivee"));
-		DateDepart.setCellValueFactory(new PropertyValueFactory<>("dateDepart"));
-		Habilitation.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().estAdmin(ligue))));
+		DateArrivee.setCellValueFactory(new PropertyValueFactory<>("DateArrivee"));
+		DateDepart.setCellValueFactory(new PropertyValueFactory<>("DateDepart"));
 
+		Habilitation.setCellValueFactory(
+				cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().estAdmin(ligue))));
+
+	}
+
+	@FXML
+	private void AccesAjoutEmploye() throws Exception {
+		Parent root;
+		root = FXMLLoader.load(getClass().getResource("../Graphique/AjoutEmploye.fxml"));
+		Stage window = (Stage) AccesAdd.getScene().getWindow();
+		window.setScene(new Scene(root, 800, 600));
 	}
 	
 	@FXML
-    private void AccesAjoutEmploye() throws Exception {
+	private void AccesGererEmploye() throws Exception {
 		Parent root;
-		root = FXMLLoader.load(getClass().getResource("AjoutEmploye.fxml"));
-		Stage window = (Stage) back.getScene().getWindow();
+		root = FXMLLoader.load(getClass().getResource("../Graphique/ModifEmploye.fxml"));
+		Stage window = (Stage) AccesModif.getScene().getWindow();
 		window.setScene(new Scene(root, 800, 600));
-    }
+	}
 
 }

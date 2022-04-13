@@ -1,4 +1,4 @@
-package JavaFX;
+package JavaFX.Controller;
 
 import static commandLineMenus.rendering.examples.util.InOut.getString;
 
@@ -42,20 +42,18 @@ public class RootControl {
 	@FXML
 	private void BackButton() throws Exception {
 		Parent root;
-		root = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
+		root = FXMLLoader.load(getClass().getResource("../Graphique/Accueil.fxml"));
 		Stage window = (Stage) back.getScene().getWindow();
 		window.setScene(new Scene(root, 800, 600));
 
 	}
-	
-	@FXML
-    private void ToucheRetour(KeyEvent event) throws Exception
-    {
-        if (event.getCode() == KeyCode.ESCAPE) {
-        	BackButton();
-        }
-        	
-    }
 
+	@FXML
+	private void ToucheRetour(KeyEvent event) throws Exception {
+		if (event.getCode() == KeyCode.ESCAPE) {
+			BackButton();
+		}
+
+	}
 
 }

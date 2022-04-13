@@ -1,4 +1,4 @@
-package JavaFX;
+package JavaFX.Controller;
 
 import java.util.ResourceBundle;
 import java.util.SortedSet;
@@ -56,8 +56,8 @@ public class LigueControl implements Initializable {
 				myListView.getSelectionModel().getSelectedItem();
 				ligue = myListView.getSelectionModel().getSelectedItem();
 
-				liguec = myListView.getSelectionModel().getSelectedItem().toString();
-				myLabel.setText(liguec);
+				// liguec = myListView.getSelectionModel().getSelectedItem().toString();
+				// myLabel.setText(liguec);
 
 			}
 
@@ -77,14 +77,12 @@ public class LigueControl implements Initializable {
 			showAlertWithoutHeaderText();
 		}
 
-		
-
 	}
 
 	@FXML
 	private void AccesEmploye() throws Exception {
 		Parent root;
-		root = FXMLLoader.load(getClass().getResource("Employe.fxml"));
+		root = FXMLLoader.load(getClass().getResource("../Graphique/Employe.fxml"));
 		Stage window = (Stage) acces.getScene().getWindow();
 		window.setScene(new Scene(root, 800, 600));
 
@@ -96,11 +94,9 @@ public class LigueControl implements Initializable {
 		Ligue ligue = myListView.getSelectionModel().getSelectedItem();
 		delete.getScene().getWindow();
 		ligue.remove();
-			
+
 		myListView.getItems().removeAll(ligues);
 		myListView.getItems().addAll(ligues);
-		
-		
 
 	}
 
@@ -113,30 +109,29 @@ public class LigueControl implements Initializable {
 			InsertLigue.setText("");
 			myListView.getItems().removeAll(ligues);
 			myListView.getItems().addAll(ligues);
-			
+
 		} else {
 			showAlertWithoutHeaderText();
 		}
-
 
 	}
 
 	@FXML
 	private void BackButton() throws Exception {
 		Parent root;
-		root = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
+		root = FXMLLoader.load(getClass().getResource("../Graphique/Accueil.fxml"));
 		Stage window = (Stage) back.getScene().getWindow();
 		window.setScene(new Scene(root, 800, 600));
 
 	}
+
 	@FXML
-    private void ToucheRetour(KeyEvent event) throws Exception
-    {
-        if (event.getCode() == KeyCode.ESCAPE) {
-        	BackButton();
-        }
-        	
-    }
+	private void ToucheRetour(KeyEvent event) throws Exception {
+		if (event.getCode() == KeyCode.ESCAPE) {
+			BackButton();
+		}
+
+	}
 
 	public static Ligue getLigue() {
 		return ligue;
@@ -156,6 +151,5 @@ public class LigueControl implements Initializable {
 
 		alert.showAndWait();
 	}
-	
 
 }

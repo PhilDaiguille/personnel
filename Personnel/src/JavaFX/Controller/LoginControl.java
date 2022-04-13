@@ -1,5 +1,4 @@
-package JavaFX;
-
+package JavaFX.Controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +14,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import personnel.Employe;
 import personnel.GestionPersonnel;
-
 
 public class LoginControl {
 
@@ -40,7 +38,7 @@ public class LoginControl {
 
 		if (GestionPersonnel.getGestionPersonnel().getRoot().checkPassword(password.getText())) {
 			Parent root;
-			root = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
+			root = FXMLLoader.load(getClass().getResource("../Graphique/Accueil.fxml"));
 			Stage window = (Stage) button.getScene().getWindow();
 			window.setScene(new Scene(root, 800, 600));
 			window.setTitle("PPE - Gestion du personnel des ligues");
@@ -53,7 +51,7 @@ public class LoginControl {
 	@FXML
 	private void BackButton() throws Exception {
 		Parent root;
-		root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+		root = FXMLLoader.load(getClass().getResource("../Graphique/Login.fxml"));
 		Stage window = (Stage) back.getScene().getWindow();
 		window.setScene(new Scene(root, 800, 600));
 
@@ -62,7 +60,7 @@ public class LoginControl {
 	@FXML
 	private void AccesLigue() throws Exception {
 		Parent root;
-		root = FXMLLoader.load(getClass().getResource("Ligue.fxml"));
+		root = FXMLLoader.load(getClass().getResource("../Graphique/Ligue.fxml"));
 		Stage window = (Stage) acces.getScene().getWindow();
 		window.setScene(new Scene(root, 800, 600));
 
@@ -71,7 +69,7 @@ public class LoginControl {
 	@FXML
 	private void AccessRoot() throws Exception {
 		Parent root;
-		root = FXMLLoader.load(getClass().getResource("Root.fxml"));
+		root = FXMLLoader.load(getClass().getResource("../Graphique/Root.fxml"));
 		Stage window = (Stage) acces.getScene().getWindow();
 		window.setScene(new Scene(root, 800, 600));
 	}
@@ -83,12 +81,12 @@ public class LoginControl {
 		}
 
 	}
+
 	@FXML
-    private void ToucheRetour(KeyEvent event) throws Exception
-    {
-        if (event.getCode() == KeyCode.ESCAPE) {
-        	BackButton();
-        }
-        	
-    }
+	private void ToucheRetour(KeyEvent event) throws Exception {
+		if (event.getCode() == KeyCode.ESCAPE) {
+			BackButton();
+		}
+
+	}
 }
