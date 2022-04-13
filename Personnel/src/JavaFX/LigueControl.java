@@ -13,6 +13,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -127,6 +129,14 @@ public class LigueControl implements Initializable {
 		window.setScene(new Scene(root, 800, 600));
 
 	}
+	@FXML
+    private void ToucheRetour(KeyEvent event) throws Exception
+    {
+        if (event.getCode() == KeyCode.ESCAPE) {
+        	BackButton();
+        }
+        	
+    }
 
 	public static Ligue getLigue() {
 		return ligue;
@@ -146,5 +156,6 @@ public class LigueControl implements Initializable {
 
 		alert.showAndWait();
 	}
+	
 
 }

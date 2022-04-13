@@ -26,6 +26,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import personnel.Employe;
 import personnel.Ligue;
@@ -71,6 +73,14 @@ public class EmployeControl implements Initializable {
 		window.setScene(new Scene(root, 800, 600));
 
 	}
+	@FXML
+    private void ToucheRetour(KeyEvent event) throws Exception
+    {
+        if (event.getCode() == KeyCode.ESCAPE) {
+        	BackButton();
+        }
+        	
+    }
 
 	@Override
 	public void initialize(java.net.URL url, ResourceBundle ressource) {

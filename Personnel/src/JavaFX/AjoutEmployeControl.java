@@ -12,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import personnel.Employe;
 import personnel.Ligue;
@@ -72,6 +74,14 @@ public class AjoutEmployeControl {
 		root = FXMLLoader.load(getClass().getResource("Employe.fxml"));
 		Stage window = (Stage) back.getScene().getWindow();
 		window.setScene(new Scene(root, 800, 600));
+    }
+    @FXML
+    private void ToucheRetour(KeyEvent event) throws Exception
+    {
+        if (event.getCode() == KeyCode.ESCAPE) {
+        	BackButton();
+        }
+        	
     }
     
     @FXML
