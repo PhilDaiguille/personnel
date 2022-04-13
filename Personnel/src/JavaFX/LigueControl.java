@@ -30,13 +30,14 @@ public class LigueControl implements Initializable{
 	
 	private GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
 	private SortedSet<Ligue> ligues = gestionPersonnel.getLigues();
+	private static Ligue ligue;
 	
 	@FXML
 	private AnchorPane anchorPane;
 	@FXML
 	private ListView<Ligue> myListView;
 	@FXML
-	private Button back, insert, acces, delete;
+	private Button back, insert, acces, delete, modif;
 	@FXML
 	private Label myLabel;
 	
@@ -54,11 +55,10 @@ public class LigueControl implements Initializable{
 			public void changed(ObservableValue<? extends Ligue> url, Ligue ressource, Ligue ressource2) {
 				
 				myListView.getSelectionModel().getSelectedItem();
+				ligue = myListView.getSelectionModel().getSelectedItem();
 				liguec = myListView.getSelectionModel().getSelectedItem().toString();
 				myLabel.setText(liguec);
-			
-				
-				
+
 			}
 
 			
@@ -68,9 +68,11 @@ public class LigueControl implements Initializable{
 	@FXML
 	private void AddLigue() throws Exception {		
 			
-		String ligue = InsertLigue.getText().toString();
+		String ligue = InsertLigue.getText();
 		Stage window = (Stage) insert.getScene().getWindow();
 		gestionPersonnel.addLigue(ligue);
+		myListView.getItems().removeAll(ligues);
+		myListView.getItems().addAll(ligues);
 			
 	}
 	@FXML
@@ -88,7 +90,20 @@ public class LigueControl implements Initializable{
 		Ligue ligue = myListView.getSelectionModel().getSelectedItem();
 		Stage window = (Stage) delete.getScene().getWindow();
 		ligue.remove();
-		System.out.print("ouais j'suis là");
+		
+			
+	}
+	
+	@FXML
+	private void ModifLigue() throws Exception {	
+		
+		myListView.getSelectionModel().getSelectedItem();
+		Stage window = (Stage) modif.getScene().getWindow();
+
+		ligue.setNom(InsertLigue.getText());
+		
+		myListView.getItems().removeAll(ligues);
+		myListView.getItems().addAll(ligues);
 			
 	}
 	
@@ -99,6 +114,15 @@ public class LigueControl implements Initializable{
 			Stage window = (Stage) back.getScene().getWindow();
 			window.setScene(new Scene(root, 800, 600));
 			
+	}
+
+	public static Ligue getLigue(){
+		return ligue;
+	}
+	
+	public static void setLigue(Ligue ligue) throws Exception{
+		
+		LigueControl.ligue = ligue;
 	}
 	
 	

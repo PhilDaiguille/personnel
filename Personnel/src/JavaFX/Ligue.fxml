@@ -25,7 +25,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="acces" layoutX="475.0" layoutY="488.0" mnemonicParsing="false" onAction="#AccesEmploye" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #fff;" text="Gérer la ligue">
+      <Button fx:id="acces" layoutX="550.0" layoutY="488.0" mnemonicParsing="false" onAction="#AccesEmploye" prefHeight="58.0" prefWidth="155.0" style="-fx-background-color: #fff;" text="Gérer la ligue">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -37,6 +37,11 @@
       <Button fx:id="delete" layoutX="401.0" layoutY="488.0" mnemonicParsing="false" onAction="#DeleteLigue" prefHeight="58.0" prefWidth="62.0" style="-fx-background-color: #e74c3c;" stylesheets="@application.css" text="X">
          <font>
             <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="modif" layoutX="476.0" layoutY="488.0" mnemonicParsing="false" onAction="#ModifLigue" prefHeight="58.0" prefWidth="62.0" style="-fx-background-color: #f1c40f;" stylesheets="@application.css" text="Modif">
+         <font>
+            <Font name="System Bold" size="11.0" />
          </font>
       </Button>
    </children>
