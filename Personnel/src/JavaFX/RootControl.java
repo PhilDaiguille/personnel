@@ -22,7 +22,7 @@ import personnel.GestionPersonnel;
 import personnel.Ligue;
 
 public class RootControl {
-	
+
 	@FXML
 	private AnchorPane anchorPane;
 	@FXML
@@ -34,26 +34,18 @@ public class RootControl {
 
 	private final GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
 	private Employe root = gestionPersonnel.getRoot();
-	
-	
-	
+
 	public GestionPersonnel getGestion() {
 		return gestionPersonnel;
 	}
-	
+
 	@FXML
-	private void BackButton() throws Exception {		
-			Parent root;
-			root = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
-			Stage window = (Stage) back.getScene().getWindow();
-			window.setScene(new Scene(root, 800, 600));
-			
-		}
+	private void BackButton() throws Exception {
+		Parent root;
+		root = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
+		Stage window = (Stage) back.getScene().getWindow();
+		window.setScene(new Scene(root, 800, 600));
+
+	}
 
 }
-
-	
-
-	
-
-
