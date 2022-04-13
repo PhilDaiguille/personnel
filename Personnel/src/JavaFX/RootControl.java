@@ -47,5 +47,15 @@ public class RootControl {
 		window.setScene(new Scene(root, 800, 600));
 
 	}
+	
+	@FXML
+    private void ToucheRetour(KeyEvent event) throws Exception
+    {
+        if (event.getCode() == KeyCode.ESCAPE) {
+        	BackButton();
+        }
+        	
+    }
+
 
 }
