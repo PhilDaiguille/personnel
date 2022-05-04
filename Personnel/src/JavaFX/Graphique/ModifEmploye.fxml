@@ -19,13 +19,13 @@
             <Font name="System Bold" size="50.0" />
          </font>
       </Label>
-      <TextField fx:id="nom" alignment="CENTER" layoutX="146.0" layoutY="191.0" prefHeight="58.0" prefWidth="234.0" promptText="Modifier le nom" />
-      <TextField fx:id="prenom" alignment="CENTER" layoutX="417.0" layoutY="191.0" prefHeight="58.0" prefWidth="234.0" promptText="Modifier le prenom" />
-      <TextField fx:id="mail" alignment="CENTER" layoutX="146.0" layoutY="271.0" prefHeight="58.0" prefWidth="234.0" promptText="Modifier le mail" />
-      <TextField fx:id="mdp" alignment="CENTER" layoutX="417.0" layoutY="271.0" prefHeight="58.0" prefWidth="234.0" promptText="Modifier le mot de passe" />
-      <DatePicker fx:id="DateArrivee" layoutX="146.0" layoutY="349.0" prefHeight="58.0" prefWidth="234.0" promptText="Modifier la date d'arrivée" />
-      <DatePicker fx:id="DateDepart" layoutX="417.0" layoutY="349.0" prefHeight="58.0" prefWidth="234.0" promptText="Modifier la date de départ" />
-      <Button fx:id="confirmer" layoutX="289.0" layoutY="464.0" mnemonicParsing="false" onAction="#ModifierEmploye" prefHeight="58.0" prefWidth="222.0" style="-fx-background-color: #3498db;" text="Valider">
+      <TextField fx:id="nom" alignment="CENTER" layoutX="107.0" layoutY="191.0" prefHeight="58.0" prefWidth="273.0" promptText="Modifier le nom" />
+      <TextField fx:id="prenom" alignment="CENTER" layoutX="417.0" layoutY="191.0" prefHeight="58.0" prefWidth="274.0" promptText="Modifier le prenom" />
+      <TextField fx:id="mail" alignment="CENTER" layoutX="106.0" layoutY="271.0" prefHeight="58.0" prefWidth="274.0" promptText="Modifier le mail" />
+      <TextField fx:id="mdp" alignment="CENTER" layoutX="417.0" layoutY="271.0" prefHeight="58.0" prefWidth="274.0" promptText="Modifier le mot de passe" />
+      <DatePicker fx:id="DateArrivee" layoutX="106.0" layoutY="349.0" prefHeight="58.0" prefWidth="274.0" promptText="Modifier la date d'arrivée" />
+      <DatePicker fx:id="DateDepart" layoutX="417.0" layoutY="349.0" prefHeight="58.0" prefWidth="274.0" promptText="Modifier la date de départ" />
+      <Button fx:id="confirmer" layoutX="262.0" layoutY="464.0" mnemonicParsing="false" onAction="#ModifierEmploye" prefHeight="58.0" prefWidth="274.0" style="-fx-background-color: #3498db;" text="Valider">
          <font>
             <Font size="25.0" />
          </font></Button>

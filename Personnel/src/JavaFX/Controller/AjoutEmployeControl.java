@@ -7,10 +7,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -38,9 +38,10 @@ public class AjoutEmployeControl {
 		Mail = mail.getText();
 		dateArrivee = DateArrivee.getValue();
 		dateDepart = DateDepart.getValue();
+		int id = ligue.getId();
 
 		if (!(Nom.equals("") && Prenom.equals("") && Mail.equals("") && password.equals(""))) {
-			this.ligue.addEmploye(Nom, Prenom, password, Mail, dateArrivee, dateDepart);
+			ligue.addEmploye(Nom, Prenom, password, Mail, dateArrivee, dateDepart, id);
 		} else {
 			showAlertWithoutHeaderText();
 		}

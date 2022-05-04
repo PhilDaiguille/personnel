@@ -19,7 +19,8 @@ public class Employe implements Serializable, Comparable<Employe> {
 	private int id;
 	private int administrateur;
 
-	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, LocalDate dateArrivee, LocalDate dateDepart) {
+	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password,
+			LocalDate dateArrivee, LocalDate dateDepart) {
 		this.gestionPersonnel = gestionPersonnel;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -218,20 +219,19 @@ public class Employe implements Serializable, Comparable<Employe> {
 			e.printStackTrace();
 		}
 	}
-		
 
 	// SET ET GET ADMINISTRATEUR
 
 	public boolean estAdmin() {
 		return ligue.getAdministrateur() == this;
 	}
-	
+
 	/**
 	 * Supprime l'employé. Si celui-ci est un administrateur, le root récupère les
 	 * droits d'administration sur sa ligue.
 	 */
 
-	public void remove() throws SauvegardeImpossible{
+	public void remove() throws SauvegardeImpossible {
 		Employe root = gestionPersonnel.getRoot();
 		if (this != root) {
 			if (estAdmin(getLigue()))
@@ -262,6 +262,7 @@ public class Employe implements Serializable, Comparable<Employe> {
 		} else {
 			res += ligue.toString();
 		}
+
 		return res + ") ";
 	}
 

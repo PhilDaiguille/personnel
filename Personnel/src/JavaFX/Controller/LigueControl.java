@@ -5,7 +5,6 @@ import java.util.SortedSet;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,14 +12,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-
 import javafx.stage.Stage;
 import personnel.GestionPersonnel;
 import personnel.Ligue;
@@ -43,7 +41,7 @@ public class LigueControl implements Initializable {
 	@FXML
 	private TextField InsertLigue;
 
-	String liguec;
+	static String liguec;
 
 	@Override
 	public void initialize(java.net.URL url, ResourceBundle ressource) {
@@ -56,8 +54,8 @@ public class LigueControl implements Initializable {
 				myListView.getSelectionModel().getSelectedItem();
 				ligue = myListView.getSelectionModel().getSelectedItem();
 
-				// liguec = myListView.getSelectionModel().getSelectedItem().toString();
-				// myLabel.setText(liguec);
+				liguec = myListView.getSelectionModel().getSelectedItem().toString();
+				myLabel.setText(liguec);
 
 			}
 
@@ -140,6 +138,10 @@ public class LigueControl implements Initializable {
 	public static void setLigue(Ligue ligue) throws Exception {
 
 		LigueControl.ligue = ligue;
+	}
+
+	public static String getNomLigue() {
+		return liguec;
 	}
 
 	private void showAlertWithoutHeaderText() {

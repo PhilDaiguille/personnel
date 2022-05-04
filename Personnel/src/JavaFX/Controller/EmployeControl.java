@@ -1,7 +1,5 @@
 package JavaFX.Controller;
 
-import static commandLineMenus.rendering.examples.util.InOut.getString;
-
 import java.util.ResourceBundle;
 import java.util.SortedSet;
 
@@ -15,14 +13,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-
 import personnel.Employe;
 import personnel.Ligue;
 
@@ -46,6 +42,8 @@ public class EmployeControl implements Initializable {
 
 	@FXML
 	private Button back, AccesAdd, AccesModif;
+
+	String LigueNom;
 
 	@FXML
 	private TableView<Employe> tableEmploye;
@@ -72,6 +70,8 @@ public class EmployeControl implements Initializable {
 
 		ligue = LigueControl.getLigue();
 		employes = ligue.getEmployes();
+		LigueNom = LigueControl.getNomLigue();
+		nomLigue.setText(LigueNom);
 
 		observableEmploye = FXCollections.observableArrayList(employes);
 
@@ -79,8 +79,10 @@ public class EmployeControl implements Initializable {
 		Nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
 		Prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
 		Mail.setCellValueFactory(new PropertyValueFactory<>("mail"));
-		DateArrivee.setCellValueFactory(new PropertyValueFactory<>("DateArrivee"));
-		DateDepart.setCellValueFactory(new PropertyValueFactory<>("DateDepart"));
+		DateArrivee.setCellValueFactory(
+				cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getdateArrivee())));
+		DateDepart.setCellValueFactory(
+				cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getdateDepart())));
 
 		Habilitation.setCellValueFactory(
 				cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().estAdmin(ligue))));
@@ -94,7 +96,7 @@ public class EmployeControl implements Initializable {
 		Stage window = (Stage) AccesAdd.getScene().getWindow();
 		window.setScene(new Scene(root, 800, 600));
 	}
-	
+
 	@FXML
 	private void AccesGererEmploye() throws Exception {
 		Parent root;

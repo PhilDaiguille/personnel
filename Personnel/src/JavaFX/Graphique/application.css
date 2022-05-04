@@ -3,4 +3,19 @@
 }
 Button{
 	-fx-background-color:#fff;
+	-fx-background-radius: 7px;
+}
+TextField{
+	-fx-background-color:#fafafa;
+	-fx-background-radius: 7px;
+
+}
+DatePicker{
+	-fx-background-color:#fafafa;
+	-fx-background-radius: 7px;
+}
+PasswordField{
+	-fx-background-color:#fafafa;
+	-fx-background-radius: 7px;
+
 }
