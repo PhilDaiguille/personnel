@@ -161,6 +161,28 @@ public class JDBC implements Passerelle {
 			throw new SauvegardeImpossible(exception);
 		}
 	}
+	
+	@Override
+	public void update(Employe employe, String column) throws SauvegardeImpossible {
+		try {
+			PreparedStatement instruction;
+			instruction = connection.prepareStatement(
+					"UPDATE employe SET nom = (?), prenom = (?), mail = (?), password = (?), date_arrivee = (?), date_depart = (?), habilitation = (?) WHERE id_employee = (?)");
+			instruction.setString(1, employe.getNom());
+			instruction.setString(2, employe.getPrenom());
+			instruction.setString(3, employe.getMail());
+			instruction.setString(4, employe.getPassword());
+			instruction.setDate(5, employe.getdateArrivee() == null ? null : Date.valueOf(employe.getdateArrivee()));
+			instruction.setDate(6, employe.getdateDepart() == null ? null : Date.valueOf(employe.getdateDepart()));
+			instruction.setBoolean(7, employe.estAdmin());
+			instruction.setInt(8, employe.getId());
+			instruction.executeUpdate();
+
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
+		}
+	}
 
 	@Override
 	public void delete(Employe employe) throws SauvegardeImpossible {
@@ -191,26 +213,6 @@ public class JDBC implements Passerelle {
 
 	}
 
-	@Override
-	public void update(Employe employe, String column) throws SauvegardeImpossible {
-		try {
-			PreparedStatement instruction;
-			instruction = connection.prepareStatement(
-					"UPDATE employe SET nom = (?), prenom = (?), mail = (?), password = (?), date_arrivee = (?), date_depart = (?), habilitation = (?) WHERE id_employee = (?)");
-			instruction.setString(1, employe.getNom());
-			instruction.setString(2, employe.getPrenom());
-			instruction.setString(3, employe.getMail());
-			instruction.setString(4, employe.getPassword());
-			instruction.setDate(5, employe.getdateArrivee() == null ? null : Date.valueOf(employe.getdateArrivee()));
-			instruction.setDate(6, employe.getdateDepart() == null ? null : Date.valueOf(employe.getdateDepart()));
-			instruction.setBoolean(7, employe.estAdmin());
-			instruction.setInt(8, employe.getId());
-			instruction.executeUpdate();
-
-		} catch (SQLException exception) {
-			exception.printStackTrace();
-			throw new SauvegardeImpossible(exception);
-		}
-	}
+	
 
 }
