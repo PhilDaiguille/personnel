@@ -4,7 +4,7 @@
 
 </div>
 
-## Documentation : https://docs.google.com/document/d/1_qO7ibMOx13M1dDFzYNhbIoGpmaUo_rbjf1XIRG6k0Y/edit
+## Documentation : [Voir la documentation pour les utilisateurs](https://docs.google.com/document/d/1_qO7ibMOx13M1dDFzYNhbIoGpmaUo_rbjf1XIRG6k0Y/edit)
 
 ## Groupe G: 
 - Quentin([Tinou95](https://github.com/Tinou95))
