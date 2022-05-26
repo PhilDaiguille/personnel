@@ -3,7 +3,9 @@
 # Personnel - PROJET G <br> | BTS SIO SLAM2 |
 
 </div>
+
 ## Documentation : https://docs.google.com/document/d/1_qO7ibMOx13M1dDFzYNhbIoGpmaUo_rbjf1XIRG6k0Y/edit
+
 ## Groupe G: 
 - Quentin([Tinou95](https://github.com/Tinou95))
 - Samuel([Samalairbien](https://github.com/Samalairbien))
