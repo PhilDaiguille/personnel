@@ -1,12 +1,14 @@
 package JavaFX.Controller;
 
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -14,14 +16,13 @@ import javafx.stage.Stage;
 import personnel.Employe;
 import personnel.GestionPersonnel;
 
-public class RootControl {
+public class RootControl implements Initializable {
 
 	@FXML
 	private AnchorPane anchorPane;
+
 	@FXML
-	private PasswordField password;
-	@FXML
-	private Label warning;
+	private Label InfoRoot;
 	@FXML
 	private Button button, back, acces;
 
@@ -30,6 +31,11 @@ public class RootControl {
 
 	public GestionPersonnel getGestion() {
 		return gestionPersonnel;
+	}
+
+	@Override
+	public void initialize(java.net.URL url, ResourceBundle ressource) {
+		InfoRoot.setText(gestionPersonnel.getRoot().toString());
 	}
 
 	@FXML

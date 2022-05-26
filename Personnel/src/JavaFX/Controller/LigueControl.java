@@ -78,15 +78,6 @@ public class LigueControl implements Initializable {
 	}
 
 	@FXML
-	private void AccesEmploye() throws Exception {
-		Parent root;
-		root = FXMLLoader.load(getClass().getResource("../Graphique/Employe.fxml"));
-		Stage window = (Stage) acces.getScene().getWindow();
-		window.setScene(new Scene(root, 800, 600));
-
-	}
-
-	@FXML
 	private void DeleteLigue() throws Exception {
 		myListView.getSelectionModel().getSelectedItem();
 		Ligue ligue = myListView.getSelectionModel().getSelectedItem();
@@ -111,6 +102,15 @@ public class LigueControl implements Initializable {
 		} else {
 			showAlertWithoutHeaderText();
 		}
+
+	}
+
+	@FXML
+	private void AccesEmploye() throws Exception {
+		Parent root;
+		root = FXMLLoader.load(getClass().getResource("../Graphique/Employe.fxml"));
+		Stage window = (Stage) acces.getScene().getWindow();
+		window.setScene(new Scene(root, 800, 600));
 
 	}
 

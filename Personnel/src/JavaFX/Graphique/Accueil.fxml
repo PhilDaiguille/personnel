@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.Controller.LoginControl">
    <children>
-      <Button fx:id="acces" alignment="CENTER" layoutX="200.0" layoutY="413.0" mnemonicParsing="false" onAction="#AccesLigue" prefHeight="107.0" prefWidth="399.0" style="-fx-background-color: #fff;" stylesheets="@application.css" text="Gerer les Ligues" textAlignment="CENTER">
+      <Button fx:id="acces" alignment="CENTER" layoutX="164.0" layoutY="450.0" mnemonicParsing="false" onAction="#AccesLigue" prefHeight="82.0" prefWidth="472.0" style="-fx-background-color: #fff;" stylesheets="@application.css" text="Gerer les Ligues" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="29.0" />
          </font>
@@ -23,7 +23,7 @@
             <Image url="@../Image/Admin.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="286.0" fitWidth="381.0" layoutX="257.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="342.0" fitWidth="420.0" layoutX="229.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Image/Ligue.png" />
          </image>

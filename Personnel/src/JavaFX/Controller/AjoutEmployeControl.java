@@ -38,10 +38,10 @@ public class AjoutEmployeControl {
 		Mail = mail.getText();
 		dateArrivee = DateArrivee.getValue();
 		dateDepart = DateDepart.getValue();
-		int id = ligue.getId();
 
 		if (!(Nom.equals("") && Prenom.equals("") && Mail.equals("") && password.equals(""))) {
-			ligue.addEmploye(Nom, Prenom, password, Mail, dateArrivee, dateDepart, id);
+
+			ligue.addEmploye(Nom, Prenom, password, Mail, dateArrivee, dateDepart);
 		} else {
 			showAlertWithoutHeaderText();
 		}

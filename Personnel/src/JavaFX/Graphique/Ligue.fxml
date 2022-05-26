@@ -9,13 +9,13 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.Controller.LigueControl">
    <children>
-      <Label layoutX="119.0" layoutY="72.0" prefHeight="47.0" prefWidth="272.0" stylesheets="@application.css" text="Selectionner la ligue :" textFill="WHITE">
+      <Label layoutX="69.0" layoutY="72.0" prefHeight="47.0" prefWidth="272.0" stylesheets="@application.css" text="Selectionner la ligue :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <ListView fx:id="myListView" layoutX="88.0" layoutY="127.0" prefHeight="347.0" prefWidth="618.0" style="-fx-border-color: #000; -fx-background-color: #fafafa; -fx-border-width: 5px;" stylesheets="@application.css" />
-      <Label fx:id="myLabel" layoutX="401.0" layoutY="77.0" prefHeight="38.0" prefWidth="283.0" stylesheets="@application.css" textFill="WHITE">
+      <ListView fx:id="myListView" layoutX="69.0" layoutY="126.0" prefHeight="347.0" prefWidth="662.0" style="-fx-border-color: #000; -fx-background-color: #fafafa; -fx-border-width: 5px;" stylesheets="@application.css" />
+      <Label fx:id="myLabel" layoutX="338.0" layoutY="77.0" prefHeight="38.0" prefWidth="387.0" stylesheets="@application.css" textFill="WHITE">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
@@ -25,7 +25,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="acces" layoutX="550.0" layoutY="488.0" mnemonicParsing="false" onAction="#AccesEmploye" prefHeight="58.0" prefWidth="155.0" style="-fx-background-color: #fff;" text="Gérer la ligue">
+      <Button fx:id="acces" layoutX="550.0" layoutY="488.0" mnemonicParsing="false" onAction="#AccesEmploye" prefHeight="58.0" prefWidth="179.0" style="-fx-background-color: #fff;" text="Gérer la ligue">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -33,8 +33,8 @@
          <font>
             <Font name="System Bold" size="27.0" />
          </font></Button>
-      <TextField fx:id="InsertLigue" alignment="CENTER" layoutX="88.0" layoutY="488.0" onAction="#AddLigue" prefHeight="58.0" prefWidth="221.0" promptText="Insérer le nom de la ligue" />
-      <Button fx:id="delete" layoutX="401.0" layoutY="488.0" mnemonicParsing="false" onAction="#DeleteLigue" prefHeight="58.0" prefWidth="62.0" style="-fx-background-color: #e74c3c;" stylesheets="@application.css" text="X">
+      <TextField fx:id="InsertLigue" alignment="CENTER" layoutX="70.0" layoutY="488.0" onAction="#AddLigue" prefHeight="58.0" prefWidth="240.0" promptText="Insérer le nom de la ligue" />
+      <Button fx:id="delete" layoutX="400.0" layoutY="488.0" mnemonicParsing="false" onAction="#DeleteLigue" prefHeight="58.0" prefWidth="62.0" style="-fx-background-color: #e74c3c;" stylesheets="@application.css" text="X">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

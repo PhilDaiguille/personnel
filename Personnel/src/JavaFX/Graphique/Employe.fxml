@@ -9,22 +9,22 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.Controller.EmployeControl">
    <children>
-      <Label alignment="CENTER" layoutX="280.0" layoutY="129.0" prefHeight="40.0" prefWidth="250.0" text="Liste des Employés" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="125.0" layoutY="81.0" prefHeight="36.0" prefWidth="279.0" text="Gérer les employés de :" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="280.0" layoutY="117.0" prefHeight="40.0" prefWidth="250.0" text="Liste des Employés" textFill="WHITE">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="nomLigue" layoutX="417.0" layoutY="81.0" prefHeight="32.0" prefWidth="203.0" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="108.0" layoutY="81.0" prefHeight="36.0" prefWidth="279.0" text="Gérer les employés de :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <TableView fx:id="tableEmploye" fixedCellSize="0.0" layoutX="65.0" layoutY="179.0" prefHeight="290.0" prefWidth="680.0" style="-fx-background-color: #fafafa;" stylesheets="@application.css">
+      <Label fx:id="nomLigue" layoutX="391.0" layoutY="81.0" prefHeight="36.0" prefWidth="352.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableEmploye" fixedCellSize="0.0" layoutX="55.0" layoutY="179.0" prefHeight="290.0" prefWidth="699.0" style="-fx-background-color: #fafafa;" stylesheets="@application.css">
         <columns>
           <TableColumn fx:id="Nom" prefWidth="85.60000610351562" text="Nom" />
           <TableColumn fx:id="Prenom" prefWidth="92.00003051757812" text="Prenom" />
@@ -37,8 +37,11 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="AccesAdd" contentDisplay="CENTER" layoutX="69.0" layoutY="488.0" mnemonicParsing="false" onAction="#AccesAjoutEmploye" prefHeight="54.0" prefWidth="259.0" style="-fx-font-weight: bold;" stylesheets="@application.css" text="Ajouter un employé" />
-      <Button fx:id="AccesModif" layoutX="346.0" layoutY="488.0" mnemonicParsing="false" onAction="#AccesGererEmploye" prefHeight="54.0" prefWidth="239.0" stylesheets="@application.css" text="Gerer l'employé " />
+      <Button fx:id="AccesAdd" contentDisplay="CENTER" layoutX="55.0" layoutY="488.0" mnemonicParsing="false" onAction="#AccesAjoutEmploye" prefHeight="54.0" prefWidth="266.0" style="-fx-font-weight: bold;" stylesheets="@application.css" text="Ajouter un employé" />
+      <Button fx:id="AccesModif" contentDisplay="CENTER" layoutX="335.0" layoutY="488.0" mnemonicParsing="false" onAction="#AccesGererEmploye" prefHeight="54.0" prefWidth="250.0" stylesheets="@application.css" text="Gerer l'employé ">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
       <Button layoutX="683.0" layoutY="488.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="57.0" style="-fx-background-color: #e74c3c;" stylesheets="@application.css" text="X">
          <font>
             <Font name="System Bold" size="20.0" />

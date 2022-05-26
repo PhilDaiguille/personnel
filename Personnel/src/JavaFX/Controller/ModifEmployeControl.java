@@ -46,8 +46,7 @@ public class ModifEmployeControl implements Initializable {
 	@FXML
 	private void BackButton() throws Exception {
 		Parent root;
-		root = FXMLLoader
-				.load(getClass().getResource("../Graphique/Employe.fxml"));
+		root = FXMLLoader.load(getClass().getResource("../Graphique/Employe.fxml"));
 		Stage window = (Stage) back.getScene().getWindow();
 		window.setScene(new Scene(root, 800, 600));
 	}
