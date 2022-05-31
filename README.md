@@ -68,7 +68,11 @@ Une interface graphique a été mise en place afin de rendre l’application acc
 
 En premier lieu, une fois l’application lancée, l’utilisateur doit s’identifier. Le programme ne contenant que la vision du super-administrateur qui est un utilisateur avec une habilitation unique, il est ici uniquement demandé le mot de passe.
 
-![image](./Documentation/Interface/Connexion.jpg)
+<div align="center">
+
+<img src="./Documentation/Interface/Connexion.jpg" alt="Connexion" width="500"/>
+
+</div>
 
 Une fois authentifié, l’utilisateur accède à la page suivante :
 
@@ -76,7 +80,9 @@ Une fois authentifié, l’utilisateur accède à la page suivante :
 
 # Accueil
 
-![image](./Documentation/Interface/Accueil.jpg)
+<div align="center">
+
+<img src="./Documentation/Interface/Accueil.jpg" alt="Accueil" width="500"/>
 
 </div>
 
@@ -90,7 +96,12 @@ Il sera présenté à deux choix différents, « Gérer les Ligues » l’icône
 
 Le premier choix redirige sur un panel affichant l’entièreté des ligues présente dans la base de données
 
-![image](./Documentation/Interface/Ligue.jpg)
+<div align="center">
+
+<img src="./Documentation/Interface/Ligue.jpg" alt="Ligue" width="500"/>
+
+</div>
+
 
 Une fois sur la page, il est possible :
 
@@ -99,22 +110,26 @@ Une fois sur la page, il est possible :
     - Le bouton «Modif » permet le changement du nom de la ligue en ayant au préalable cliquer sur celle désirée.
     - Le bouton «Gérer la ligue» a pour fonction d’afficher les employés présents dans la ligue, comprenant leur nom, prénom, mail, date d’arrivée et départ ainsi que leur niveau d’habilitation.
 
-<div align="center" width="30px">
+<div align="center">
 
 # L'employé
 
-![image](./Documentation/Interface/Employé.jpg)
+<img src="./Documentation/Interface/Employé.jpg" alt="Employe" width="500"/>
 
 </div>
 
 Le menu de cette page comprend un bouton «Ajouter un employé», redirigeant sur une page avec des champs de texte à remplir en fonction de l’employé à ajouter.
 
-![image](./Documentation/Interface/AjoutEmployé.jpg)
+<div align="center">
+    <img src="./Documentation/Interface/AjoutEmployé.jpg" alt="AjoutEmploye" width="500"/>
+</div>
 
 Une fois un employé présent dans la ligue choisie, il est possible de le modifier de par le bouton Gérer l’employé
 qui redirigera sur une page similaire à celle d’ajout.
 
-![image](./Documentation/Interface/ModifEmployé.jpg)
+<div align="center">
+    <img src="./Documentation/Interface/ModifEmployé.jpg" alt="ModifEmploye" width="500"/>
+</div>
 
 <div align="center">
 
@@ -124,7 +139,9 @@ qui redirigera sur une page similaire à celle d’ajout.
 
 Le super-admin possède une page spéciale pour gérer son compte admin.
 
-![image](./Documentation/Interface/Root.jpg)
+<div align="center">
+    <img src="./Documentation/Interface/Root.jpg" alt="Root" width="500"/>
+</div>
 
 <hr>
 <br>
@@ -134,8 +151,9 @@ Le super-admin possède une page spéciale pour gérer son compte admin.
 # `Annexe_Développeur`
 
 </div>
-
-![image]("./Documentation/mcd.jpg")
+<div align="center">
+    <img src="https://raw.githubusercontent.com/PhilDaiguille/personnel/master/Documentation/mcd.jpg" alt="MCD" width="300"/>
+</div>
 
     LIGUE (_id_ligue_, nom_ligue)
     EMPLOYE (_id_employee_, nom, prénom, mail, password, date_arrivée, date_départ, habilitation, #id_ligue)
