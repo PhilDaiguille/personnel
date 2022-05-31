@@ -64,6 +64,7 @@ public class JDBC implements Passerelle {
 					if (employe.getInt("habilitation") == 1) {
 						ligue.setAdministrateur(employee);
 					}
+
 				}
 			}
 		} catch (SQLException exception) {
@@ -161,7 +162,7 @@ public class JDBC implements Passerelle {
 			throw new SauvegardeImpossible(exception);
 		}
 	}
-	
+
 	@Override
 	public void update(Employe employe, String column) throws SauvegardeImpossible {
 		try {
@@ -212,7 +213,5 @@ public class JDBC implements Passerelle {
 		}
 
 	}
-
-	
 
 }
