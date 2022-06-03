@@ -16,10 +16,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import personnel.Employe;
 import personnel.Ligue;
 
 public class ModifEmployeControl implements Initializable {
 	Ligue ligue;
+	Employe employe;
 	@FXML
 	private DatePicker DateArrivee, DateDepart;
 
@@ -34,7 +36,19 @@ public class ModifEmployeControl implements Initializable {
 	@Override
 	public void initialize(java.net.URL url, ResourceBundle ressource) {
 
-		ligue = LigueControl.getLigue();
+		try {
+			ligue = LigueControl.getLigue();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			employe = EmployeControl.getEmploye();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(employe);
 
 	}
 

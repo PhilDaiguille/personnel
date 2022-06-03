@@ -22,7 +22,7 @@ public class AjoutEmployeControl {
 	private DatePicker DateArrivee, DateDepart;
 
 	@FXML
-	private Button back, confirmer;
+	private Button back, confirmer, Supprimer;
 
 	@FXML
 	private TextField nom, prenom, mail, mdp;
@@ -38,10 +38,15 @@ public class AjoutEmployeControl {
 		Mail = mail.getText();
 		dateArrivee = DateArrivee.getValue();
 		dateDepart = DateDepart.getValue();
+		ligue = LigueControl.getLigue();
 
 		if (!(Nom.equals("") && Prenom.equals("") && Mail.equals("") && password.equals(""))) {
 
-			ligue.addEmploye(Nom, Prenom, password, Mail, dateArrivee, dateDepart);
+			ligue.addEmploye(Nom, Prenom, Mail, password, dateArrivee, dateDepart);
+			Parent root;
+			root = FXMLLoader.load(getClass().getResource("../Graphique/Employe.fxml"));
+			Stage window = (Stage) back.getScene().getWindow();
+			window.setScene(new Scene(root, 800, 600));
 		} else {
 			showAlertWithoutHeaderText();
 		}

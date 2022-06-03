@@ -118,7 +118,6 @@ public class GestionPersonnel implements Serializable {
 	}
 
 	void delete(Employe employe) throws SauvegardeImpossible {
-
 		passerelle.delete(employe);
 
 	}

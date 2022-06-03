@@ -41,12 +41,12 @@ public class EmployeControl implements Initializable {
 	private Label nomLigue;
 
 	@FXML
-	private Button back, AccesAdd, AccesModif;
+	private Button back, AccesAdd, AccesModif, Supprimer;
 
 	String LigueNom;
 
 	@FXML
-	private TableView<Employe> tableEmploye;
+	private static TableView<Employe> tableEmploye;
 
 	@FXML
 	private void BackButton() throws Exception {
@@ -87,6 +87,21 @@ public class EmployeControl implements Initializable {
 		Habilitation.setCellValueFactory(
 				cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().estAdmin(ligue))));
 
+	}
+
+	@FXML
+	private void Supprimer() throws Exception {
+		Employe employe = tableEmploye.getSelectionModel().getSelectedItem();
+		employe.remove();
+
+		tableEmploye.getItems().removeAll(employes);
+		tableEmploye.getItems().addAll(employes);
+	}
+
+	public static Employe getEmploye() {
+		Employe lemploye = tableEmploye.getSelectionModel().getSelectedItem();
+
+		return lemploye;
 	}
 
 	@FXML

@@ -234,8 +234,9 @@ public class Employe implements Serializable, Comparable<Employe> {
 	public void remove() throws SauvegardeImpossible {
 		Employe root = gestionPersonnel.getRoot();
 		if (this != root) {
-			if (estAdmin(getLigue()))
+			if (estAdmin(getLigue())) {
 				getLigue().setAdministrateur(root);
+			}
 			getLigue().remove(this);
 			gestionPersonnel.delete(this);
 
