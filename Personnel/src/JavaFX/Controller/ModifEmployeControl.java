@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -29,7 +30,10 @@ public class ModifEmployeControl implements Initializable {
 	private Button back, confirmer;
 
 	@FXML
-	private TextField nom, prenom, mail, mdp;
+	private TextField nom, prenom, mail;
+
+	@FXML
+	private PasswordField mdp;
 
 	private LocalDate dateArrivee, dateDepart;
 

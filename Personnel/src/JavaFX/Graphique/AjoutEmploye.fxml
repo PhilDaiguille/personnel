@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -21,8 +22,8 @@
       </Label>
       <TextField fx:id="nom" alignment="CENTER" layoutX="80.0" layoutY="191.0" prefHeight="58.0" prefWidth="300.0" promptText="Ajouter un nom" />
       <TextField fx:id="prenom" alignment="CENTER" layoutX="417.0" layoutY="191.0" prefHeight="58.0" prefWidth="300.0" promptText="Ajouter un prenom" />
+      <PasswordField fx:id="mdp" alignment="CENTER" layoutX="417.0" layoutY="271.0" prefHeight="58.0" prefWidth="300.0" promptText="Ajouter un mot de passe" />
       <TextField fx:id="mail" alignment="CENTER" layoutX="80.0" layoutY="271.0" prefHeight="58.0" prefWidth="300.0" promptText="Ajouter un mail" />
-      <TextField fx:id="mdp" alignment="CENTER" layoutX="417.0" layoutY="271.0" prefHeight="58.0" prefWidth="300.0" promptText="Ajouter un mot de passe" />
       <DatePicker fx:id="DateArrivee" layoutX="80.0" layoutY="349.0" prefHeight="58.0" prefWidth="300.0" promptText="Ajouter la date d'arrivée" />
       <DatePicker fx:id="DateDepart" layoutX="417.0" layoutY="349.0" prefHeight="58.0" prefWidth="300.0" promptText="Ajouter la date de départ" />
       <Button fx:id="confirmer" layoutX="258.0" layoutY="494.0" mnemonicParsing="false" onAction="#AjouterEmploye" prefHeight="58.0" prefWidth="284.0" style="-fx-background-color: #3498db;" text="Valider">

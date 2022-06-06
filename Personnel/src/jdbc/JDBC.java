@@ -32,21 +32,25 @@ public class JDBC implements Passerelle {
 
 	@Override
 	public GestionPersonnel getGestionPersonnel() throws SauvegardeImpossible {
-		GestionPersonnel gestionPersonnel = new GestionPersonnel();
 
+		GestionPersonnel gestionPersonnel = new GestionPersonnel();
 		try {
-			String requete = "SELECT * FROM ligue";
+			String requete = "SELECT * FROM ligue ORDER BY nom_ligue";
 			Statement instruction = connection.createStatement();
 			ResultSet ligues = instruction.executeQuery(requete);
 
 			while (ligues.next()) {
+
 				gestionPersonnel.addLigue(ligues.getInt("id_ligue"), ligues.getString("nom_ligue"));
+
 				PreparedStatement req = connection.prepareStatement("SELECT * FROM employe WHERE id_ligue = ?");
+
 				req.setInt(1, ligues.getInt("id_ligue"));
 				ResultSet employe = req.executeQuery();
-				Ligue ligue = gestionPersonnel.getLigues().first();
+				Ligue ligue = gestionPersonnel.getLigues().last();
 
 				while (employe.next()) {
+
 					int id = employe.getInt("id_employee");
 					String nom = employe.getString("nom");
 					String prenom = employe.getString("prenom");
