@@ -44,7 +44,7 @@ public class JDBC implements Passerelle {
 				PreparedStatement req = connection.prepareStatement("SELECT * FROM employe WHERE id_ligue = ?");
 				req.setInt(1, ligues.getInt("id_ligue"));
 				ResultSet employe = req.executeQuery();
-				Ligue ligue = gestionPersonnel.getLigues().last();
+				Ligue ligue = gestionPersonnel.getLigues().first();
 
 				while (employe.next()) {
 					int id = employe.getInt("id_employee");

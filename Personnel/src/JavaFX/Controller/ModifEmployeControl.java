@@ -35,19 +35,9 @@ public class ModifEmployeControl implements Initializable {
 
 	@Override
 	public void initialize(java.net.URL url, ResourceBundle ressource) {
+		ligue = LigueControl.getLigue();
+//		employe = EmployeControl.getEmploye();
 
-		try {
-			ligue = LigueControl.getLigue();
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
-			employe = EmployeControl.getEmploye();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		System.out.println(employe);
 
 	}

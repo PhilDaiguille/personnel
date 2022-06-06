@@ -46,7 +46,7 @@ public class EmployeControl implements Initializable {
 	String LigueNom;
 
 	@FXML
-	private static TableView<Employe> tableEmploye;
+	private TableView<Employe> tableEmploye;
 
 	@FXML
 	private void BackButton() throws Exception {
@@ -98,7 +98,7 @@ public class EmployeControl implements Initializable {
 		tableEmploye.getItems().addAll(employes);
 	}
 
-	public static Employe getEmploye() {
+	public Employe getEmploye() {
 		Employe lemploye = tableEmploye.getSelectionModel().getSelectedItem();
 
 		return lemploye;
